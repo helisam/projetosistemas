@@ -1,0 +1,70 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="948" measuredH="451" mockupW="720" mockupH="451">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="228" y="0" w="720" h="451" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <text>Cadastro%20de%20barcos</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TextInput" x="420" y="135" w="-1" h="-1" measuredW="211" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <text>Insira%20nome%20da%20embarca%E7%E3o%20%28255%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="411" y="80" w="-1" h="-1" measuredW="229" measuredH="28" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Cadastro%20de%20Embarca%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Accordion" x="228" y="72" w="178" h="354" measuredW="178" measuredH="240" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cadastrar%20Embarca%E7%E3o%0ACadastrar%20Itiner%E1rio%0ACadastrar%20Hor%E1rios%0ACadastrar%20Passagem%0ACadastrar%20Op%E7%F5esProgresso%0AImportar%20Dados%20do%20Tempo</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="420" y="115" w="-1" h="-1" measuredW="123" measuredH="20" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>Nome%20da%20Embarca%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::TextInput" x="420" y="182" w="-1" h="-1" measuredW="166" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <text>Insira%20nome%20do%20dono%20%28255%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="420" y="162" w="-1" h="-1" measuredW="118" measuredH="20" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>Dono%20da%20Embarca%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::TextInput" x="420" y="229" w="-1" h="-1" measuredW="170" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <text>Insira%20dados%20t%E9cnicos%20%28255%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="420" y="209" w="-1" h="-1" measuredW="176" measuredH="20" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>Dados%20T%E9cnicos%20da%20Embarca%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::TextInput" x="420" y="276" w="-1" h="-1" measuredW="183" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <text>Insira%20data%20%28dd/mm/aaaa%29%2810%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="420" y="256" w="-1" h="-1" measuredW="148" measuredH="20" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>Fabrica%E7%E3o%20da%20Embarca%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Calendar" x="603" y="276" w="-1" h="-1" measuredW="96" measuredH="96" zOrder="11" locked="false" isInGroup="-1"/>
+  </controls>
+</mockup>
