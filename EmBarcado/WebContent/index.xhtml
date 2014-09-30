@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<f:view>
+	<h:head>
+		<title>Manter Proprietário</title>
+
+		<style type="text/css">
+			.ui-widget {font-size: 10px; !important;}
+		</style>
+	</h:head>
+
+	<h:body>
+		<!--  <ui:include src="./menu.xhtml" />-->
+		<h:form id="frmGeral">
+			<p:fieldset legend="Controle de Proprietários do Sistema EmBarco" toggleable="true">
+				<p:messages id="messages" />
+
+				<h:panelGrid columns="2" id="pnProprietarios"
+					style="font-family: Verdana, Arial; font-weight: bold;">
+					<h:outputLabel id="lbNome" value="*Nome:" for="nome"
+						style="float: right;" />
+					<p:inputText id="nome" size="100"
+						value="#{proprietarioBean.proprietario.nome}" required="true"
+						requiredMessage="Campo [Nome] é obrigatório." />
+
+					<h:outputLabel id="lbCPF" value="*CPF:" for="cpf"
+						style="float: right;" />
+					<p:inputText id="cpf" size="20"
+						value="#{proprietarioBean.proprietario.cpf}" required="true"
+						requiredMessage="Campo [CPF] é obrigatório.">
+					</p:inputText>
+
+					<h:outputLabel id="lbmail" value="*E-Mail:" for="mail"
+						style="float: right;" />
+					<p:inputText id="mail" size="50"
+						value="#{proprietarioBean.proprietario.mail}" required="true"
+						requiredMessage="Campo [E-Mail] é obrigatório.">
+					</p:inputText>
+
+					<h:outputLabel id="lbFone" value="*Telefone:" for="fone"
+						style="float: right;" />
+					<p:inputText id="fone" size="30"
+						value="#{proprietarioBean.proprietario.fone}" required="true"
+						requiredMessage="Campo [Telefone] é obrigatório." />
+
+				</h:panelGrid>
+				<center>
+					<h:panelGrid columns="2"
+						style="font-size: 12px; font-weight: bold;">
+						<p:commandButton value="Adicionar Proprietário"
+							action="#{proprietarioBean.save()}"
+							update="frmGeral, messages, dtProprietarios" />
+						<p:commandButton value="Alterar Proprietário"
+							action="#{proprietarioBean.update()}"
+							update="frmGeral, messages, dtProprietarios" />
+					</h:panelGrid>
+				</center>
+
+				<p:spacer height="10" />
+
+				<p:dataTable id="dtProprietarios"
+					emptyMessage="Nenhum registro encontrado."
+					value="#{proprietarioBean.proprietarios}" var="p"
+					style="text-align: center; font-weight: bold;">
+					<f:facet name="header">
+						<h:outputText value="Registro de Proprietários" />
+					</f:facet>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{p.nome}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="CPF" />
+						</f:facet>
+						<h:outputText value="#{p.cpf}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="E-Mail" />
+						</f:facet>
+						<h:outputText value="#{p.mail}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Telefone" />
+						</f:facet>
+						<h:outputText value="#{p.fone}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Remover" />
+						</f:facet>
+						<f:ajax event="click" render="@form"
+							listener="#{proprietarioBean.remove(p)}">
+							<h:commandLink value="Remover" />
+						</f:ajax>
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Alterar" />
+						</f:facet>
+						<h:commandLink value="Alterar">
+							<p:ajax event="click" listener="#{proprietarioBean.preparaAlterar(p)}" 
+								update="@form" />
+						</h:commandLink>
+					</p:column>
+
+					<f:facet name="footer">
+						<h:outputText
+							value="Há um total de #{proprietarioBean.count} Proprietário(s) cadastrado(s) no sistema." />
+					</f:facet>
+				</p:dataTable>
+			</p:fieldset>
+		</h:form>
+	</h:body>
+</f:view>
+</html>
