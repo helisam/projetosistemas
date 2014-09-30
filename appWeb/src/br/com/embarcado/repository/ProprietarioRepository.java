@@ -30,7 +30,7 @@ public class ProprietarioRepository {
 		this.entityManager.flush();
 	}
 	
-	public Proprietario find(Long ID){
+	public Proprietario search(Long ID){
 		return this.entityManager.find(Proprietario.class, ID);
 	}
 

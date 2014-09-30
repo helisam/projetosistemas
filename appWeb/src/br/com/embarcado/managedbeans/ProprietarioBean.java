@@ -1,6 +1,5 @@
 package br.com.embarcado.managedbeans;
 
-import java.awt.print.Printable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -50,7 +49,7 @@ public class ProprietarioBean {
 	
 	public void update(){
 		ProprietarioRepository repository = new ProprietarioRepository(this.getManager());
-		repository.find(this.proprietario.getId());
+		repository.search(this.proprietario.getId());
 		repository.update(this.proprietario);
 		
 		this.proprietario = new Proprietario();

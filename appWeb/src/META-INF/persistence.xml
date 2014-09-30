@@ -10,6 +10,7 @@ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <!-- Classes de persistencia -->
         <class>br.com.embarcado.entities.Proprietario</class>
+        <class>br.com.embarcado.entities.Barco</class>
         <properties>
             <!-- Configurações para ter acesso ao banco de dados -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
