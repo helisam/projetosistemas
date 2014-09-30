@@ -9,7 +9,7 @@
 
 <f:view>
 	<h:head>
-		<title>Manter Barco</title>
+		<title>Manter Proprietário</title>
 
 		<style type="text/css">
 			.ui-widget {font-size: 10px; !important;}
@@ -19,14 +19,15 @@
 	<h:body>
 		<!--  <ui:include src="./menu.xhtml" />-->
 		<h:form id="frmGeral">
-			<p:fieldset legend="Controle de Barcos do Sistema EmBarco" toggleable="true">
+			<p:fieldset legend="Controle de Proprietários do Sistema EmBarco" toggleable="true">
 				<p:messages id="messages" />
 
-				<h:panelGrid columns="2" id="pnBarcos"
+				<h:panelGrid columns="2" id="pnProprietarios"
 					style="font-family: Verdana, Arial; font-weight: bold;">
 					<h:outputLabel id="lbNome" value="*Nome:" for="nome"
 						style="float: right;" />
-					<p:inputText id="nome" size="100" value="#{barcoBean.barco.nome}" required="true"
+					<p:inputText id="nome" size="100"
+						value="#{proprietarioBean.proprietario.nome}" required="true"
 						requiredMessage="Campo [Nome] é obrigatório." />
 
 					<h:outputLabel id="lbCPF" value="*CPF:" for="cpf"
