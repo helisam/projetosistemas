@@ -56,14 +56,6 @@ public class ProprietarioBean {
 		this.proprietarios = null;
 	}
 
-	public Long getpID() {
-		return pID;
-	}
-
-	public void setpID(Long pID) {
-		this.pID = pID;
-	}
-
 	@SuppressWarnings("unchecked")
 	public List<Proprietario> getProprietarios() {
 		if (this.proprietarios == null) {
@@ -75,10 +67,22 @@ public class ProprietarioBean {
 		return this.proprietarios;
 	}
 
+	public void setProprietarios(List<Proprietario> proprietarios) {
+		this.proprietarios = proprietarios;
+	}
+
 	public Long getCount() {
 		ProprietarioRepository repository = new ProprietarioRepository(
 				this.getManager());
 		return repository.getCountProprietarios();
+	}
+	
+	public Long getpID() {
+		return pID;
+	}
+
+	public void setpID(Long pID) {
+		this.pID = pID;
 	}
 
 	public Proprietario getProprietario() {

@@ -11,7 +11,29 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/ehcache-1.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/hibernate-testing.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/infinispan-core-4.0.0.FINAL.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/jbosscache-core-3.2.1.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/jsf-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/jsf-impl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/mysql-connector-java-5.1.13-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/oscache-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/primefaces-2.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/proxool-0.8.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/helisam.bentes/Desktop/lib/swarmcache-1.0RC2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

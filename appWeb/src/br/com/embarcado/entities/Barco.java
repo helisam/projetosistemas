@@ -1,7 +1,6 @@
 package br.com.embarcado.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +31,7 @@ public class Barco implements Serializable {
 	private String nome;
 
 	@Column(name = "barco_ANOFABRICACAO", nullable = false)
-	private Date anoFabricacao;
+	private String anoFabricacao;
 
 	@Column(name = "barco_CAPACIDADE")
 	private String capacidade;
@@ -60,11 +59,11 @@ public class Barco implements Serializable {
 		this.nome = nome;
 	}
 
-	public Date getAnoFabricacao() {
+	public String getAnoFabricacao() {
 		return anoFabricacao;
 	}
 
-	public void setAnoFabricacao(Date anoFabricacao) {
+	public void setAnoFabricacao(String anoFabricacao) {
 		this.anoFabricacao = anoFabricacao;
 	}
 
@@ -91,5 +90,6 @@ public class Barco implements Serializable {
 	public void setProprietario(Proprietario proprietario) {
 		this.proprietario = proprietario;
 	}
+
 
 }

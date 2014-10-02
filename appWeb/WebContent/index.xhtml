@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -29,75 +28,74 @@
 					<p:inputText id="nome" size="100" value="#{barcoBean.barco.nome}" required="true"
 						requiredMessage="Campo [Nome] é obrigatório." />
 
-					<h:outputLabel id="lbCPF" value="*CPF:" for="cpf"
+					<h:outputLabel id="lbAno" value="*Ano de Fabricação:" for="anoFabricacao"
 						style="float: right;" />
-					<p:inputText id="cpf" size="20"
-						value="#{proprietarioBean.proprietario.cpf}" required="true"
-						requiredMessage="Campo [CPF] é obrigatório.">
+					<p:inputText id="anoFabricacao" size="20"
+						value="#{barcoBean.barco.anoFabricacao}" required="true"
+						requiredMessage="Campo [Ano de Fabricação] é obrigatório.">
 					</p:inputText>
 
-					<h:outputLabel id="lbmail" value="*E-Mail:" for="mail"
+					<h:outputLabel id="lbCapacidade" value="*Capacidade:" for="capacidade"
 						style="float: right;" />
-					<p:inputText id="mail" size="50"
-						value="#{proprietarioBean.proprietario.mail}" required="true"
-						requiredMessage="Campo [E-Mail] é obrigatório.">
+					<p:inputText id="capacidade" size="5"
+						value="#{barcoBean.barco.capacidade}" required="true"
+						requiredMessage="Campo [Capacidade] é obrigatório.">
 					</p:inputText>
 
-					<h:outputLabel id="lbFone" value="*Telefone:" for="fone"
+					<h:outputLabel id="lbDescricao" value="*Descrição:" for="descricao"
 						style="float: right;" />
-					<p:inputText id="fone" size="30"
-						value="#{proprietarioBean.proprietario.fone}" required="true"
-						requiredMessage="Campo [Telefone] é obrigatório." />
-
+					<p:inputText id="descricao" size="100"
+						value="#{barcoBean.barco.descricao}" required="true"
+						requiredMessage="Campo [Descrição] é obrigatório." />
 				</h:panelGrid>
 				<center>
 					<h:panelGrid columns="2"
 						style="font-size: 12px; font-weight: bold;">
-						<p:commandButton value="Adicionar Proprietário"
-							action="#{proprietarioBean.save()}"
-							update="frmGeral, messages, dtProprietarios" />
-						<p:commandButton value="Alterar Proprietário"
-							action="#{proprietarioBean.update()}"
-							update="frmGeral, messages, dtProprietarios" />
+						<p:commandButton value="Adicionar Barco"
+							action="#{barcoBean.save()}"
+							update="frmGeral, messages, dtBarcos" />
+						<p:commandButton value="Alterar Barco"
+							action="#{barcooBean.update()}"
+							update="frmGeral, messages, dtBarcos" />
 					</h:panelGrid>
 				</center>
 
 				<p:spacer height="10" />
 
-				<p:dataTable id="dtProprietarios"
+				<p:dataTable id="dtBarcos"
 					emptyMessage="Nenhum registro encontrado."
-					value="#{proprietarioBean.proprietarios}" var="p"
+					value="#{barcoBean.barcos}" var="b"
 					style="text-align: center; font-weight: bold;">
 					<f:facet name="header">
-						<h:outputText value="Registro de Proprietários" />
+						<h:outputText value="Registro de Barcos" />
 					</f:facet>
 
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Nome" />
 						</f:facet>
-						<h:outputText value="#{p.nome}" />
+						<h:outputText value="#{b.nome}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="CPF" />
+							<h:outputText value="Ano de Fabricação" />
 						</f:facet>
-						<h:outputText value="#{p.cpf}" />
+						<h:outputText value="#{b.anoFabricacao}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="E-Mail" />
+							<h:outputText value="Capacidade" />
 						</f:facet>
-						<h:outputText value="#{p.mail}" />
+						<h:outputText value="#{b.capacidade}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Telefone" />
+							<h:outputText value="Descrição" />
 						</f:facet>
-						<h:outputText value="#{p.fone}" />
+						<h:outputText value="#{b.descricao}" />
 					</p:column>
 					
 					<p:column>
@@ -105,7 +103,7 @@
 							<h:outputText value="Remover" />
 						</f:facet>
 						<f:ajax event="click" render="@form"
-							listener="#{proprietarioBean.remove(p)}">
+							listener="#{barcoBean.remove(b)}">
 							<h:commandLink value="Remover" />
 						</f:ajax>
 					</p:column>
@@ -115,14 +113,14 @@
 							<h:outputText value="Alterar" />
 						</f:facet>
 						<h:commandLink value="Alterar">
-							<p:ajax event="click" listener="#{proprietarioBean.preparaAlterar(p)}" 
+							<p:ajax event="click" listener="#{barcoBean.preparaAlterar(b)}" 
 								update="@form" />
 						</h:commandLink>
 					</p:column>
 
 					<f:facet name="footer">
 						<h:outputText
-							value="Há um total de #{proprietarioBean.count} Proprietário(s) cadastrado(s) no sistema." />
+							value="Há um total de #{barcoBean.count} Barco(s) cadastrado(s) no sistema." />
 					</f:facet>
 				</p:dataTable>
 			</p:fieldset>
