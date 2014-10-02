@@ -3,7 +3,7 @@ package br.com.embarcado.managedbeans;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -15,7 +15,7 @@ import br.com.embarcado.repository.BarcoRepository;
 import br.com.embarcado.repository.ProprietarioRepository;
 
 @ManagedBean
-@SessionScoped
+@ApplicationScoped
 public class BarcoBean {
 
 	private Barco barco = new Barco();
@@ -36,6 +36,10 @@ public class BarcoBean {
 		this.barcos = null;
 	}
 	
+	public void setBarcos(List<Barco> barcos) {
+		this.barcos = barcos;
+	}
+
 	public void update() {
 		ProprietarioRepository propRepository = new ProprietarioRepository(
 				this.getManager());

@@ -33,6 +33,14 @@ public class BarcoRepository {
 		return this.entityManager.find(Barco.class, ID);
 	}
 
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
 	@SuppressWarnings("rawtypes")
 	public List getBarcos() {
 		return this.entityManager.createNamedQuery("Barco.findAll")

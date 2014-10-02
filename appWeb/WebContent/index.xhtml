@@ -25,27 +25,27 @@
 					style="font-family: Verdana, Arial; font-weight: bold;">
 					<h:outputLabel id="lbNome" value="*Nome:" for="nome"
 						style="float: right;" />
-					<p:inputText id="nome" size="100" value="#{barcoBean.barco.nome}" required="true"
+					<p:inputText id="nome" size="100" value="#{barcoBean.barco.nome}" required="false"
 						requiredMessage="Campo [Nome] é obrigatório." />
 
 					<h:outputLabel id="lbAno" value="*Ano de Fabricação:" for="anoFabricacao"
 						style="float: right;" />
 					<p:inputText id="anoFabricacao" size="20"
-						value="#{barcoBean.barco.anoFabricacao}" required="true"
+						value="#{barcoBean.barco.anoFabricacao}" required="false"
 						requiredMessage="Campo [Ano de Fabricação] é obrigatório.">
 					</p:inputText>
 
 					<h:outputLabel id="lbCapacidade" value="*Capacidade:" for="capacidade"
 						style="float: right;" />
 					<p:inputText id="capacidade" size="5"
-						value="#{barcoBean.barco.capacidade}" required="true"
+						value="#{barcoBean.barco.capacidade}" required="false"
 						requiredMessage="Campo [Capacidade] é obrigatório.">
 					</p:inputText>
 
 					<h:outputLabel id="lbDescricao" value="*Descrição:" for="descricao"
 						style="float: right;" />
 					<p:inputText id="descricao" size="100"
-						value="#{barcoBean.barco.descricao}" required="true"
+						value="#{barcoBean.barco.descricao}" required="false"
 						requiredMessage="Campo [Descrição] é obrigatório." />
 				</h:panelGrid>
 				<center>
@@ -55,7 +55,7 @@
 							action="#{barcoBean.save()}"
 							update="frmGeral, messages, dtBarcos" />
 						<p:commandButton value="Alterar Barco"
-							action="#{barcooBean.update()}"
+							action="#{barcoBean.update()}"
 							update="frmGeral, messages, dtBarcos" />
 					</h:panelGrid>
 				</center>
