@@ -24,6 +24,7 @@ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
  
             <!-- Definição para mostrar no console os comandos do Hibernate -->
             <property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
  
             <!-- Seta o pool de conexões -->
             <property name="c3p0.acquire_increment" value="1" />

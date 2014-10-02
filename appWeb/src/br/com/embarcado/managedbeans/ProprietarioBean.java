@@ -15,13 +15,8 @@ import br.com.embarcado.repository.ProprietarioRepository;
 @ManagedBean
 @SessionScoped
 public class ProprietarioBean {
-
-	//@ManagedProperty(value = "#{entityManager}")
-	//private EntityManager entityManager;
-
 	private Proprietario proprietario = new Proprietario();
-	private List<Proprietario> proprietarios;
-	private Long pID;
+	private List<Proprietario> proprietarios = null;
 
 	public void save() {
 		ProprietarioRepository repository = new ProprietarioRepository(
@@ -42,7 +37,6 @@ public class ProprietarioBean {
 	
 	public String preparaAlterar(Proprietario proprietario){
 		this.setProprietario(proprietario);
-		this.setpID(getProprietario().getId());
 		
 		return "index?faces-redirect=true";
 	}
@@ -56,7 +50,6 @@ public class ProprietarioBean {
 		this.proprietarios = null;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Proprietario> getProprietarios() {
 		if (this.proprietarios == null) {
 			ProprietarioRepository repository = new ProprietarioRepository(
@@ -77,14 +70,6 @@ public class ProprietarioBean {
 		return repository.getCountProprietarios();
 	}
 	
-	public Long getpID() {
-		return pID;
-	}
-
-	public void setpID(Long pID) {
-		this.pID = pID;
-	}
-
 	public Proprietario getProprietario() {
 		return proprietario;
 	}

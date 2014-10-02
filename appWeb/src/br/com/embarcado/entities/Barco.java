@@ -16,9 +16,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "BARCO")
 @NamedQueries({
-		@NamedQuery(name = "Barco.findAll", query = "SELECT p FROM Barco p"),
-		@NamedQuery(name = "Barco.count", query = "SELECT COUNT(p) FROM Barco p"),
-		@NamedQuery(name = "Barco.findByNome", query = "SELECT p FROM Barco p WHERE p.nome = :nome") })
+		@NamedQuery(name = "Barco.findAll", query = "SELECT b FROM Barco b"),
+		@NamedQuery(name = "Barco.count", query = "SELECT COUNT(b) FROM Barco b"),
+		@NamedQuery(name = "Barco.findByNome", query = "SELECT b FROM Barco b WHERE b.nome = :nome") })
 public class Barco implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -33,10 +33,10 @@ public class Barco implements Serializable {
 	@Column(name = "barco_ANOFABRICACAO", nullable = false)
 	private String anoFabricacao;
 
-	@Column(name = "barco_CAPACIDADE")
+	@Column(name = "barco_CAPACIDADE", nullable = false)
 	private String capacidade;
 
-	@Column(name = "barco_DESCRICAO")
+	@Column(name = "barco_DESCRICAO", nullable = false)
 	private String descricao;
 
 	@OneToOne

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PROPRIETARIO")
 @NamedQueries({
-	@NamedQuery(name = "Proprietario.findAll", query = "SELECT p FROM Proprietario p"),
+	@NamedQuery(name = "Proprietario.findAll", query = "SELECT p FROM Proprietario p ORDER BY p.nome ASC"), 
 	@NamedQuery(name = "Proprietario.count", query = "SELECT COUNT(p) FROM Proprietario p"),
 	@NamedQuery(name = "Proprietario.findByNome", query = "SELECT p FROM Proprietario p WHERE p.nome = :nome")
 })
@@ -27,16 +27,16 @@ public class Proprietario implements Serializable {
 	@Column(name = "proprietario_ID")
 	private Long id;
 	
-	@Column(name = "proprietario_NOME", nullable = false)
+	@Column(name = "proprietario_NOME")
 	private String nome;
 	
-	@Column(name = "proprietario_CPF" , nullable = false)
+	@Column(name = "proprietario_CPF" )
 	private String cpf;
 	
-	@Column(name = "proprietario_MAIL", nullable = false)
+	@Column(name = "proprietario_MAIL")
 	private String mail;
 	
-	@Column(name = "proprietario_FONE", nullable = false)
+	@Column(name = "proprietario_FONE")
 	private String fone;
 
 	public Long getId() {

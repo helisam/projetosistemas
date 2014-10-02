@@ -2,7 +2,7 @@ package br.com.embarcado.managedbeans;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
+import javax.annotation.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -23,13 +23,27 @@ public class BarcoBean {
 	private Long proprietarioID;
 
 	public void save(Barco barco) {
+	
+		ProprietarioRepository propRepository = new ProprietarioRepository(
+				this.getManager());
+		Proprietario proprietario = propRepository.search(proprietarioID);
+		this.barco.setProprietario(proprietario);
+		
+		BarcoRepository barcoRepository = new BarcoRepository(this.getManager());
+		barcoRepository.save(this.barco);
+
+		this.barco = new Barco();
+		this.barcos = null;
+	}
+	
+	public void update() {
 		ProprietarioRepository propRepository = new ProprietarioRepository(
 				this.getManager());
 		Proprietario proprietario = propRepository.search(proprietarioID);
 		this.barco.setProprietario(proprietario);
 
 		BarcoRepository barcoRepository = new BarcoRepository(this.getManager());
-		barcoRepository.save(this.barco);
+		barcoRepository.update(this.barco);
 
 		this.barco = new Barco();
 		this.proprietarioID = null;
@@ -57,9 +71,11 @@ public class BarcoBean {
 		return repository.getCountBarcos();
 	}
 
-	public void preparaAlterar(Barco barco) {
+	public String preparaAlterar(Barco barco) {
 		this.setBarco(barco);
 		this.setProprietarioID(this.getBarco().getProprietario().getId());
+		
+		return "index?faces-redirect=true";
 	}
 
 	public Barco getBarco() {
@@ -76,10 +92,6 @@ public class BarcoBean {
 
 	public void setProprietarioID(Long proprietarioID) {
 		this.proprietarioID = proprietarioID;
-	}
-
-	public void setBarcos(List<Barco> barcos) {
-		this.barcos = barcos;
 	}
 
 	private EntityManager getManager() {

@@ -35,7 +35,7 @@ public class ProprietarioRepository {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public List getProprietarios() {
+	public List<Proprietario> getProprietarios() {
 		return this.entityManager.createNamedQuery("Proprietario.findAll")
 				.getResultList();
 	}
@@ -44,5 +44,4 @@ public class ProprietarioRepository {
 		return (Long) this.entityManager.createNamedQuery("Proprietario.count")
 				.getSingleResult();
 	}
-
 }

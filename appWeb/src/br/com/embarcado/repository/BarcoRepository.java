@@ -2,10 +2,7 @@ package br.com.embarcado.repository;
 
 import java.util.List;
 
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
-import javax.servlet.http.HttpServletRequest;
 
 import br.com.embarcado.entities.Barco;
 
@@ -30,6 +27,10 @@ public class BarcoRepository {
 	public void update(Barco barco){
 		this.entityManager.merge(barco);
 		this.entityManager.flush();
+	}
+	
+	public Barco find(Long ID) {
+		return this.entityManager.find(Barco.class, ID);
 	}
 
 	@SuppressWarnings("rawtypes")
