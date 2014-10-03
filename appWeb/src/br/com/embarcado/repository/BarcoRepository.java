@@ -22,7 +22,6 @@ public class BarcoRepository {
 		Barco barcoTemp = new Barco();
 		barcoTemp = this.entityManager.find(Barco.class, barco.getId());
 		this.entityManager.remove(barcoTemp);
-		this.entityManager.remove(barco);
 	}
 	
 	public void update(Barco barco){
