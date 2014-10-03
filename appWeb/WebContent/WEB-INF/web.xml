@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-	<display-name>Locadora</display-name>
+	<display-name>EmBarco</display-name>
 	<context-param>
 		<description>State saving method: 'client' or 'server'.</description>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
