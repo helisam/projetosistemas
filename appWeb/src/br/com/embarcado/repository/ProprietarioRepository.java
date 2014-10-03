@@ -34,7 +34,7 @@ public class ProprietarioRepository {
 		return this.entityManager.find(Proprietario.class, ID);
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings("unchecked")
 	public List<Proprietario> getProprietarios() {
 		return this.entityManager.createNamedQuery("Proprietario.findAll")
 				.getResultList();
