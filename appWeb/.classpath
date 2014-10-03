@@ -13,5 +13,6 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSF2.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Security"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
