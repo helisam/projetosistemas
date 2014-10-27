@@ -263,10 +263,9 @@
 		</p:dialog>
 		<p:dialog modal="true" widgetVar="viewItinerario" showEffect="slide"
 			hideEffect="explode" resizable="false" width="500"
-			header="Detalhes do Itinerário de Barco #{barcoBean.barco.nome}">
+			header="Detalhes do Itinerário de Barco">
 			<h:form id="frmItinerario2">
 				<p:growl id="msgItinerario2" />
-
 				<h:panelGrid columns="2">
 					<h:outputLabel id="lbDestino" value="Destino:" for="destino"
 						style="float: right;" />
@@ -297,7 +296,7 @@
 					<h:outputText value="#{itinerarioBean.itinerario.data}" />
 
 					<p:commandButton value="Fechar"
-						oncomplete="viewItinerario.hide()" />
+						oncomplete="PF('viewItinerario).hide()" />
 				</h:panelGrid>
 			</h:form>
 		</p:dialog>
