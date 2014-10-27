@@ -1,0 +1,9 @@
+INSERT INTO `user` VALUES ('admin', 1, '123');
+INSERT INTO `user` VALUES ('user', 1, '1234');
+ 
+INSERT INTO authority VALUES ('ROLE_ADMIN');
+INSERT INTO authority VALUES ('ROLE_USER');
+ 
+INSERT INTO user_auth VALUES ('admin','ROLE_USER');
+INSERT INTO user_auth VALUES ('admin','ROLE_ADMIN');
+INSERT INTO user_auth VALUES ('user','ROLE_USER');

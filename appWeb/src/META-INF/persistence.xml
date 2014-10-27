@@ -11,6 +11,7 @@ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
         <!-- Classes de persistencia -->
         <class>br.com.embarcado.entities.Proprietario</class>
         <class>br.com.embarcado.entities.Barco</class>
+        <class>br.com.embarcado.entities.Itinerario</class>
         <properties>
             <!-- Configurações para ter acesso ao banco de dados -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />

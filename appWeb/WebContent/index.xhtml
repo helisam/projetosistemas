@@ -52,6 +52,7 @@
 					<p:inputText id="descricao" size="100"
 						value="#{barcoBean.barco.descricao}" required="false"
 						requiredMessage="Campo [Descrição] é obrigatório." />
+						
 					<h:outputLabel id="lbProprietario" value="*Proprietario: "
 						for="proprietario" style="float: right;" />
 					<h:selectOneMenu id="proprietario"
@@ -61,9 +62,19 @@
 						<f:selectItems value="#{proprietarioBean.proprietarios}"
 							var="prop" itemLabel="#{prop.nome}" itemValue="#{prop.id}" />
 					</h:selectOneMenu>
+
+					<h:outputLabel id="lbItinerario" value="*Itinerário: "
+						for="itinerario" style="float: right;" />
+					<h:selectOneMenu id="itinerario" value="#{barcoBean.itinerarioID}"
+						required="true"
+						requiredMessage="Campo [Itinerário] é obrigatório.">
+						<f:selectItem itemLabel="Escolha ..." itemValue="" />
+						<f:selectItems value="#{itinerarioBean.itinerarios}" var="iti"
+							itemLabel="#{iti.destino}" itemValue="#{iti.id}" />
+					</h:selectOneMenu>
 				</h:panelGrid>
 				<center>
-					<h:panelGrid columns="3"
+					<h:panelGrid columns="4"
 						style="font-size: 12px; font-weight: bold;">
 						<p:commandButton value="Adicionar Barco"
 							action="#{barcoBean.save()}"
@@ -73,6 +84,8 @@
 							update="frmGeral, messages, dtBarcos" />
 						<p:commandButton value="Novo Proprietario"
 							onclick="cadProprietario.show()" />
+						<p:commandButton value="Novo Itinerario"
+							onclick="cadItinerario.show()" />
 					</h:panelGrid>
 				</center>
 
@@ -86,7 +99,8 @@
 						<h:outputText value="Registro de Barcos" />
 					</f:facet>
 
-					<p:column id="colunaNome" filterBy="#{b.nome}" headerText="Filtrar por nome" filterMatchMode="contains">
+					<p:column id="colunaNome" filterBy="#{b.nome}"
+						headerText="Filtrar por nome" filterMatchMode="contains">
 						<f:facet name="header">
 							<h:outputText value="Nome" />
 						</f:facet>
@@ -120,8 +134,16 @@
 						</f:facet>
 						<h:outputText value="#{b.proprietario.nome}" />
 					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Destino" />
+						</f:facet>
+						<h:commandLink action="cadItinerario.show()" value="#{b.itinerario.destino}" />
+					</p:column>
 
-					<p:column rendered="#{facesContext.externalContext.isUserInRole('ROLE_ADMIN')}">
+					<p:column
+						rendered="#{facesContext.externalContext.isUserInRole('ROLE_ADMIN')}">
 						<f:facet name="header">
 							<h:outputText value="Remover" />
 						</f:facet>
@@ -131,7 +153,8 @@
 						</f:ajax>
 					</p:column>
 
-					<p:column rendered="#{facesContext.externalContext.isUserInRole('ROLE_ADMIN')}">
+					<p:column
+						rendered="#{facesContext.externalContext.isUserInRole('ROLE_ADMIN')}">
 						<f:facet name="header">
 							<h:outputText value="Alterar" />
 						</f:facet>
@@ -160,19 +183,19 @@
 					<p:inputText id="nome" size="50"
 						value="#{proprietarioBean.proprietario.nome}" required="true"
 						requiredMessage="Campo [Nome] é obrigatório." />
-						
+
 					<h:outputLabel id="lbCPF" value="CPF:" for="cpf"
 						style="float: right;" />
 					<p:inputText id="cpf" size="50"
 						value="#{proprietarioBean.proprietario.cpf}" required="true"
 						requiredMessage="Campo [CPF] é obrigatório." />
-						
+
 					<h:outputLabel id="lbMail" value="E-mail:" for="mail"
 						style="float: right;" />
 					<p:inputText id="mail" size="50"
 						value="#{proprietarioBean.proprietario.mail}" required="true"
 						requiredMessage="Campo [E-mail] é obrigatório." />
-						
+
 					<h:outputLabel id="lbFone" value="Fone:" for="fone"
 						style="float: right;" />
 					<p:inputText id="fone" size="50"
@@ -181,6 +204,101 @@
 					<p:commandButton value="Salvar" action="#{proprietarioBean.save()}"
 						update="msgProprietario, frmProprietario, frmGeral"
 						oncomplete="cadProprietario.hide()" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+		<p:dialog modal="true" widgetVar="cadItinerario" showEffect="slide"
+			hideEffect="explode" resizable="false" width="500"
+			header="Cadastrar novo Itinerário de Barco">
+			<h:form id="frmItinerario">
+				<p:growl id="msgItinerario" />
+
+				<h:panelGrid columns="2">
+					<h:outputLabel id="lbDestino" value="Destino:" for="destino"
+						style="float: right;" />
+					<p:inputText id="nome" size="50"
+						value="#{itinerarioBean.itinerario.destino}" required="true"
+						requiredMessage="Campo [Destino] é obrigatório." />
+
+					<h:outputLabel id="lbPartida" value="Local de Partida:"
+						for="partida" style="float: right;" />
+					<p:inputText id="partida" size="50"
+						value="#{itinerarioBean.itinerario.localPartida}" required="true"
+						requiredMessage="Campo [Local de Partida] é obrigatório." />
+
+					<h:outputLabel id="lbSaida" value="Horário de Saída:" for="saida"
+						style="float: right;" />
+					<p:inputText id="saida" size="50"
+						value="#{itinerarioBean.itinerario.horaSaida}" required="true"
+						requiredMessage="Campo [Horário de Saída] é obrigatório." />
+
+					<h:outputLabel id="lbChegada" value="Horário de Chegada:"
+						for="chegada" style="float: right;" />
+					<p:inputText id="chegada" size="50"
+						value="#{itinerarioBean.itinerario.horaChegada}" required="true"
+						requiredMessage="Campo [Horário de Chegada] é obrigatório." />
+
+					<h:outputLabel id="lbDistancia" value="Distância (KM):"
+						for="distancia" style="float: right;" />
+					<p:inputText id="distancia" size="50"
+						value="#{itinerarioBean.itinerario.distancia}" required="true"
+						requiredMessage="Campo [Distância (KM)] é obrigatório." />
+
+					<h:outputLabel id="lbObservacao" value="Observação:" for="obs"
+						style="float: right;" />
+					<p:inputText id="obs" size="50"
+						value="#{itinerarioBean.itinerario.observacao}" required="false" />
+
+					<h:outputLabel id="lbData" value="Dias de Partida:" for="data"
+						style="float: right;" />
+					<p:inputText id="data" size="50"
+						value="#{itinerarioBean.itinerario.data}" required="true"
+						requiredMessage="Campo [Dias de Partida] é obrigatório." />
+
+					<p:commandButton value="Salvar" action="#{itinerarioBean.save()}"
+						update="msgItinerario, frmItinerario, frmGeral"
+						oncomplete="cadItinerario.hide()" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+		<p:dialog modal="true" widgetVar="viewItinerario" showEffect="slide"
+			hideEffect="explode" resizable="false" width="500"
+			header="Detalhes do Itinerário de Barco #{barcoBean.barco.nome}">
+			<h:form id="frmItinerario2">
+				<p:growl id="msgItinerario2" />
+
+				<h:panelGrid columns="2">
+					<h:outputLabel id="lbDestino" value="Destino:" for="destino"
+						style="float: right;" />
+					<h:outputText value="#{itinerarioBean.itinerario.destino}" />
+
+					<h:outputLabel id="lbPartida" value="Local de Partida:"
+						for="partida" style="float: right;" />
+					<h:outputText value="#{itinerarioBean.itinerario.localPartida}" />
+					
+					<h:outputLabel id="lbSaida" value="Horário de Saída:" for="saida"
+						style="float: right;" />
+					<h:outputText value="#{itinerarioBean.itinerario.horaSaida}" />
+
+					<h:outputLabel id="lbChegada" value="Horário de Chegada:"
+						for="chegada" style="float: right;" />
+					<h:outputText value="#{itinerarioBean.itinerario.horaChegada}" />
+
+					<h:outputLabel id="lbDistancia" value="Distância (KM):"
+						for="distancia" style="float: right;" />
+					<h:outputText value="#{itinerarioBean.itinerario.distancia}" />
+
+					<h:outputLabel id="lbObservacao" value="Observação:" for="obs"
+						style="float: right;" />
+					<h:outputText value="#{itinerarioBean.itinerario.observacao}" />
+					
+					<h:outputLabel id="lbData" value="Dias de Partida:" for="data"
+						style="float: right;" />
+					<h:outputText value="#{itinerarioBean.itinerario.data}" />
+
+					<p:commandButton value="Fechar" action=" "
+						update="msgItinerario2, frmItinerario2, frmGeral"
+						oncomplete="viewItinerario.hide()" />
 				</h:panelGrid>
 			</h:form>
 		</p:dialog>

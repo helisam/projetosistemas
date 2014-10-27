@@ -1,7 +1,6 @@
 package br.com.embarcado.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ITINERARIO")
@@ -29,17 +26,24 @@ public class Itinerario implements Serializable {
 
 	@Column(name = "itinerario_DESTINO", length = 50, nullable = false)
 	private String destino;
+
 	@Column(name = "itinerario_LOCALPARTIDA", nullable = false)
 	private String localPartida;
+
+	@Column(name = "itinerario_HORASAIDA", nullable = false)
+	private String horaSaida;
+
 	@Column(name = "itinerario_HORACHEGADA", nullable = false)
 	private String horaChegada;
+
 	@Column(name = "itinerario_DISTANCIA", nullable = false)
 	private String distancia;
-	@Column(name = "itinerario_OBSERVACAO", nullable = false)
+
+	@Column(name = "itinerario_OBSERVACAO", nullable = true)
 	private String observacao;
-	@Temporal(TemporalType.TIMESTAMP)
+
 	@Column(name = "itinerario_DATA", nullable = false)
-	private Date data;
+	private String data;
 
 	public Long getId() {
 		return id;
@@ -63,6 +67,14 @@ public class Itinerario implements Serializable {
 
 	public void setLocalPartida(String localPartida) {
 		this.localPartida = localPartida;
+	}
+
+	public String getHoraSaida() {
+		return horaSaida;
+	}
+
+	public void setHoraSaida(String horaSaida) {
+		this.horaSaida = horaSaida;
 	}
 
 	public String getHoraChegada() {
@@ -89,11 +101,11 @@ public class Itinerario implements Serializable {
 		this.observacao = observacao;
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 }

@@ -23,7 +23,6 @@ public class ItinerarioBean {
 	public void save() {
 		ItinerarioRepository repository = new ItinerarioRepository(
 				this.getManager());
-
 		repository.save(this.itinerario);
 		
 		this.itinerario = new Itinerario();
