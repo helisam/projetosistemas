@@ -32,6 +32,10 @@ public class ItinerarioRepository {
 	public Itinerario find(Long ID) {
 		return this.entityManager.find(Itinerario.class, ID);
 	}
+	
+	public Itinerario search(Long ID){
+		return this.entityManager.find(Itinerario.class, ID);
+	}
 
 	public EntityManager getEntityManager() {
 		return entityManager;
