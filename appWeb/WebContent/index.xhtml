@@ -139,7 +139,7 @@
 						<f:facet name="header">
 							<h:outputText value="Destino" />
 						</f:facet>
-						<h:commandLink action="cadItinerario.show()" value="#{b.itinerario.destino}" />
+						<h:commandLink onclick="viewItinerario.show()" value="#{b.itinerario.destino}" />
 					</p:column>
 
 					<p:column
@@ -296,8 +296,7 @@
 						style="float: right;" />
 					<h:outputText value="#{itinerarioBean.itinerario.data}" />
 
-					<p:commandButton value="Fechar" action=" "
-						update="msgItinerario2, frmItinerario2, frmGeral"
+					<p:commandButton value="Fechar"
 						oncomplete="viewItinerario.hide()" />
 				</h:panelGrid>
 			</h:form>
