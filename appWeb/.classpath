@@ -12,23 +12,70 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSF2.0"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Security"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/mysql-connector-java-5.1.7-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/javassist-3.9.0.GA.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/slf4j-api-1.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/adrianobk/Adriano/capitulo3_locadora_completo/capitulo3_locadora_lib/lib/slf4j-simple-1.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/projeto de sistemas/projeto web/lib/jsf-impl-2.0.10.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/projeto de sistemas/projeto web/lib/jsf-impl-2.0.10-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/projeto de sistemas/projeto web/lib/javax.faces-2.0.10.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/projeto de sistemas/projeto web/lib/javax.faces-2.0.10-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/projeto de sistemas/projeto web/lib/javax.faces-api-2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Adriano/Desktop/projeto de sistemas/projeto web/lib/javax.faces-api-2.2-javadoc.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSF2.0">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Security">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-digester3-3.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ehcache-1.5.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate-testing.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/infinispan-core-4.0.0.FINAL.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jbosscache-core-3.2.1.GA.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsf-api.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsf-impl.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.13-bin.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.aop-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.asm-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.aspects-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.beans-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.context-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.context.support-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.core-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.expression-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.instrument-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.instrument.tomcat-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.jdbc-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.jms-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.orm-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.oxm-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.test-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.transaction-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.web-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.web.portlet-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.web.servlet-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.web.struts-3.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oscache-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/primefaces-2.2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/proxool-0.8.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-acl-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-cas-client-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-config-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-core-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-ldap-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-openid-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-taglibs-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-security-web-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/swarmcache-1.0RC2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

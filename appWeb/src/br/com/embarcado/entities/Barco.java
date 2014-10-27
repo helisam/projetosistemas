@@ -42,6 +42,10 @@ public class Barco implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "proprietario_ID")
 	private Proprietario proprietario;
+	
+	@OneToOne
+	@JoinColumn(name = "itinerario_ID")
+	private Itinerario itinerario;
 
 	public Long getId() {
 		return id;
@@ -89,6 +93,14 @@ public class Barco implements Serializable {
 
 	public void setProprietario(Proprietario proprietario) {
 		this.proprietario = proprietario;
+	}
+
+	public Itinerario getItinerario() {
+		return itinerario;
+	}
+
+	public void setItinerario(Itinerario itinerario) {
+		this.itinerario = itinerario;
 	}
 
 

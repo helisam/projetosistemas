@@ -1,4 +1,4 @@
-package br.embarco.security;
+package br.com.embarcado.security;
 
 import java.io.Serializable;
 import java.util.List;
