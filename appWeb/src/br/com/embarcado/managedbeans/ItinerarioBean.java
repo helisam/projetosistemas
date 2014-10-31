@@ -29,10 +29,6 @@ public class ItinerarioBean {
 		this.itinerarios = null;
 	}
 
-	public void setItinerarios(List<Itinerario> itinerarios) {
-		this.itinerarios = itinerarios;
-	}
-
 	public void update() {
 		ItinerarioRepository repository = new ItinerarioRepository(
 				this.getManager());
@@ -48,15 +44,6 @@ public class ItinerarioBean {
 		repository.remove(itinerario);
 
 		this.itinerario = null;
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<Itinerario> getItinerarios() {
-		if (this.itinerarios == null) {
-			ItinerarioRepository repository = new ItinerarioRepository(this.getManager());
-			this.itinerarios = repository.getItinerarios();
-		}
-		return this.itinerarios;
 	}
 
 	public Long getCount() {
@@ -76,6 +63,18 @@ public class ItinerarioBean {
 
 	public void setItinerario(Itinerario itinerario) {
 		this.itinerario = itinerario;
+	}
+
+	public List<Itinerario> getItinerarios() {
+		if (itinerarios == null) {
+			ItinerarioRepository repository = new ItinerarioRepository(this.getManager());
+			itinerarios = repository.getItinerarios();
+		}
+		return this.itinerarios;
+	}
+
+	public void setItinerarios(List<Itinerario> itinerarios) {
+		this.itinerarios = itinerarios;
 	}
 
 	private EntityManager getManager() {

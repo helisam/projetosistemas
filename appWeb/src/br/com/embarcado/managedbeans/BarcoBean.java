@@ -20,6 +20,16 @@ import br.com.embarcado.repository.ProprietarioRepository;
 @SessionScoped
 public class BarcoBean {
 
+	private Barco barcoSelecionado;
+	
+	public Barco getBarcoSelecionado() {
+		return barcoSelecionado;
+	}
+
+	public void setBarcoSelecionado(Barco barcoSelecionado) {
+		this.barcoSelecionado = barcoSelecionado;
+	}
+
 	private Barco barco = new Barco();
 	private List<Barco> barcos = null;
 	private Long proprietarioID;
@@ -40,10 +50,6 @@ public class BarcoBean {
 
 		this.barco = new Barco();
 		this.barcos = null;
-	}
-
-	public void setBarcos(List<Barco> barcos) {
-		this.barcos = barcos;
 	}
 
 	public void update() {
@@ -71,13 +77,16 @@ public class BarcoBean {
 		this.barcos = null;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Barco> getBarcos() {
-		if (this.barcos == null) {
+		if (barcos == null) {
 			BarcoRepository repository = new BarcoRepository(this.getManager());
-			this.barcos = repository.getBarcos();
+			barcos = repository.getBarcos();
 		}
 		return this.barcos;
+	}
+	
+	public void setBarcos(List<Barco> barcos) {
+		this.barcos = barcos;
 	}
 
 	public Long getCount() {

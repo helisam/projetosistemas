@@ -52,11 +52,11 @@
 					<p:inputText id="descricao" size="100"
 						value="#{barcoBean.barco.descricao}" required="false"
 						requiredMessage="Campo [Descrição] é obrigatório." />
-						
+
 					<h:outputLabel id="lbProprietario" value="*Proprietario: "
 						for="proprietario" style="float: right;" />
 					<h:selectOneMenu id="proprietario"
-						value="#{barcoBean.proprietarioID}" required="true"
+						value="#{barcoBean.proprietarioID}" required="false"
 						requiredMessage="Campo [Proprietario] é obrigatório.">
 						<f:selectItem itemLabel="Escolha ..." itemValue="" />
 						<f:selectItems value="#{proprietarioBean.proprietarios}"
@@ -66,7 +66,7 @@
 					<h:outputLabel id="lbItinerario" value="*Itinerário: "
 						for="itinerario" style="float: right;" />
 					<h:selectOneMenu id="itinerario" value="#{barcoBean.itinerarioID}"
-						required="true"
+						required="false"
 						requiredMessage="Campo [Itinerário] é obrigatório.">
 						<f:selectItem itemLabel="Escolha ..." itemValue="" />
 						<f:selectItems value="#{itinerarioBean.itinerarios}" var="iti"
@@ -134,12 +134,16 @@
 						</f:facet>
 						<h:outputText value="#{b.proprietario.nome}" />
 					</p:column>
-					
+
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Destino" />
 						</f:facet>
-						<h:commandLink onclick="viewItinerario.show()" value="#{b.itinerario.destino}" />
+						<p:commandButton value="#{b.itinerario.destino}"
+							update="frmGeral, frmItinerario2" oncomplete="viewItinerario.show()"  icon="ui-icon-search">
+							<f:setPropertyActionListener target="#{barcoBean.barcoSelecionado}"
+                            value="#{b}" />
+						</p:commandButton>
 					</p:column>
 
 					<p:column
@@ -216,7 +220,7 @@
 				<h:panelGrid columns="2">
 					<h:outputLabel id="lbDestino" value="Destino:" for="destino"
 						style="float: right;" />
-					<p:inputText id="nome" size="50"
+					<p:inputText id="destino" size="50"
 						value="#{itinerarioBean.itinerario.destino}" required="true"
 						requiredMessage="Campo [Destino] é obrigatório." />
 
@@ -269,35 +273,38 @@
 				<h:panelGrid columns="2">
 					<h:outputLabel id="lbDestino" value="Destino:" for="destino"
 						style="float: right;" />
-					<h:outputText value="#{itinerarioBean.itinerario.destino}" />
+					<h:outputText value="#{barcoBean.barcoSelecionado.itinerario.destino}" />
 
 					<h:outputLabel id="lbPartida" value="Local de Partida:"
 						for="partida" style="float: right;" />
-					<h:outputText value="#{itinerarioBean.itinerario.localPartida}" />
-					
+					<h:outputText value="#{barcoBean.barcoSelecionado.itinerario.localPartida}" />
+
 					<h:outputLabel id="lbSaida" value="Horário de Saída:" for="saida"
 						style="float: right;" />
-					<h:outputText value="#{itinerarioBean.itinerario.horaSaida}" />
+					<h:outputText value="#{barcoBean.barcoSelecionado.itinerario.horaSaida}" />
 
 					<h:outputLabel id="lbChegada" value="Horário de Chegada:"
 						for="chegada" style="float: right;" />
-					<h:outputText value="#{itinerarioBean.itinerario.horaChegada}" />
+					<h:outputText value="#{barcoBean.barcoSelecionado.itinerario.horaChegada}" />
 
 					<h:outputLabel id="lbDistancia" value="Distância (KM):"
 						for="distancia" style="float: right;" />
-					<h:outputText value="#{itinerarioBean.itinerario.distancia}" />
+					<h:outputText value="#{barcoBean.barcoSelecionado.itinerario.distancia}" />
 
 					<h:outputLabel id="lbObservacao" value="Observação:" for="obs"
 						style="float: right;" />
-					<h:outputText value="#{itinerarioBean.itinerario.observacao}" />
-					
+					<h:outputText value="#{barcoBean.barcoSelecionado.itinerario.observacao}" />
+
 					<h:outputLabel id="lbData" value="Dias de Partida:" for="data"
 						style="float: right;" />
-					<h:outputText value="#{itinerarioBean.itinerario.data}" />
+					<h:outputText value="#{barcoBean.barcoSelecionado.itinerario.data}" />
 
-					<p:commandButton value="Fechar"
-						oncomplete="PF('viewItinerario).hide()" />
 				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+		<p:dialog widgetVar="myDialog" modal="true" width="500" >
+			<h:form>
+				
 			</h:form>
 		</p:dialog>
 	</h:body>
