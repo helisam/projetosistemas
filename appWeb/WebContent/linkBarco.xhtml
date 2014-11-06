@@ -170,10 +170,11 @@
 						</p:dataTable>
 					</p:fieldset>
 				</h:form>
-				<p:dialog modal="false" widgetVar="cadProprietario"
+				<p:dialog modal="true" widgetVar="cadProprietario"
 					showEffect="slide" hideEffect="explode" resizable="false"
 					width="400" appendToBody="true"
 					header="Cadastrar novo Proprietario de Barco">
+
 					<h:form id="frmProprietario">
 						<p:growl id="msgProprietario" />
 
@@ -201,10 +202,11 @@
 							<p:inputText id="fone" size="50"
 								value="#{proprietarioBean.proprietario.fone}" required="true"
 								requiredMessage="Campo [Fone] é obrigatório." />
+
 							<p:commandButton value="Salvar"
 								action="#{proprietarioBean.save()}"
-								update="msgProprietario, frmProprietario, frmGeral"
-								oncomplete="cadProprietario.hide()"  />
+								update="msgProprietario,frmProprietario,frmGeral"
+								oncomplete="cadProprietario.hide()" />
 						</h:panelGrid>
 					</h:form>
 				</p:dialog>
@@ -263,9 +265,10 @@
 						</h:panelGrid>
 					</h:form>
 				</p:dialog>
-				<p:dialog modal="false" widgetVar="viewItinerario" showEffect="slide"
-					hideEffect="explode" resizable="false" width="500"
-					appendToBody="true" header="Detalhes do Itinerário de Barco">
+				<p:dialog modal="false" widgetVar="viewItinerario"
+					showEffect="slide" hideEffect="explode" resizable="false"
+					width="500" appendToBody="true"
+					header="Detalhes do Itinerário de Barco">
 					<h:form id="frmItinerario2">
 						<p:growl id="msgItinerario2" />
 						<h:panelGrid columns="2">
@@ -303,7 +306,6 @@
 								style="float: right;" />
 							<h:outputText
 								value="#{barcoBean.barcoSelecionado.itinerario.data}" />
-
 						</h:panelGrid>
 					</h:form>
 				</p:dialog>

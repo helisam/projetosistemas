@@ -34,18 +34,19 @@ public class ProprietarioBean {
 
 		this.proprietarios = null;
 	}
-	
-	public String preparaAlterar(Proprietario proprietario){
+
+	public String preparaAlterar(Proprietario proprietario) {
 		this.setProprietario(proprietario);
-		
+
 		return "index?faces-redirect=true";
 	}
-	
-	public void update(){
-		ProprietarioRepository repository = new ProprietarioRepository(this.getManager());
+
+	public void update() {
+		ProprietarioRepository repository = new ProprietarioRepository(
+				this.getManager());
 		repository.search(this.proprietario.getId());
 		repository.update(this.proprietario);
-		
+
 		this.proprietario = new Proprietario();
 		this.proprietarios = null;
 	}
@@ -69,7 +70,7 @@ public class ProprietarioBean {
 				this.getManager());
 		return repository.getCountProprietarios();
 	}
-	
+
 	public Proprietario getProprietario() {
 		return proprietario;
 	}
@@ -78,14 +79,14 @@ public class ProprietarioBean {
 		this.proprietario = proprietario;
 	}
 
-//	public void setEntityManager(EntityManager entityManager) {
-//		this.entityManager = entityManager;
-//	}
-	
+	// public void setEntityManager(EntityManager entityManager) {
+	// this.entityManager = entityManager;
+	// }
+
 	private EntityManager getManager() {
-	    FacesContext fc = FacesContext.getCurrentInstance();
-	    ExternalContext ec = fc.getExternalContext();
-	    HttpServletRequest request = (HttpServletRequest) ec.getRequest();
-	    return (EntityManager) request.getAttribute("entityManager");
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ExternalContext ec = fc.getExternalContext();
+		HttpServletRequest request = (HttpServletRequest) ec.getRequest();
+		return (EntityManager) request.getAttribute("entityManager");
 	}
 }

@@ -14,53 +14,46 @@
 
 <h:body>
 
-	<h:form>
-
-		<p:layout fullPage="true">
-			<p:layoutUnit position="top" height="60">
+	<p:layout fullPage="true">
+		<p:layoutUnit position="top" height="60">
 			texto
+			<h:form>
 				<p:breadCrumb>
 
 					<p:menuitem value="Home" url="index.xhtml" />
-					<p:menuitem value="Barcos" onclick="#{linkBean.linkBarco()}"
-						immediate="true" />
+					<p:menuitem value="Barcos" onclick="#{linkBean.linkBarco()}" />
 					<p:menuitem value="Itinerarios" url="#{linkBean.linkBarco()}" />
 					<p:menuitem value="Proprietarios" oncomplete="linkBarco.xhtml" />
 					<p:menuitem value="Cidades" url="#" />
 					<p:menuitem value="Passagens" url="#{linkBean.linkPassagem()}" />
 				</p:breadCrumb>
-			</p:layoutUnit>
-			<p:layoutUnit position="left" width="180" header="Menu"
-				collapsible="true">
-				<p:menu style="width: 93%">
-					<p:submenu label="Cadastros">
-						<p:menuitem value="Home" url="#" />
-						<p:menuitem value="Barcos" url="#{linkBean.linkBarco()}" />
-						<p:menuitem value="Itinerarios" url="#" />
-						<p:menuitem value="Proprietarios" url="#" />
-						<p:menuitem value="Cidades" url="#" />
-						<p:menuitem value="Passagens" url="#" />
-					</p:submenu>
-					<p:submenu label="Trajeto">
-						<p:menuitem value="Mapa" url="#" />
-					</p:submenu>
-					<p:submenu>
-						<p:menuitem value="Sair" url="#" icon="ui-icon ui-icon-power" />
-					</p:submenu>
-				</p:menu>
-			</p:layoutUnit>
-			<p:layoutUnit position="center" header="Sistema" id="conteudo">
-				<ui:insert name="conteudo" />
-			</p:layoutUnit>
-			<p:layoutUnit position="bottom" height="50">
+			</h:form>
+		</p:layoutUnit>
+		<p:layoutUnit position="left" width="180" header="Menu"
+			collapsible="true">
+			<p:menu style="width: 93%">
+				<p:submenu label="Cadastros">
+					<p:menuitem value="Home" url="#" />
+					<p:menuitem value="Barcos" url="#{linkBean.linkBarco()}" />
+					<p:menuitem value="Itinerarios" url="#" />
+					<p:menuitem value="Proprietarios" url="#" />
+					<p:menuitem value="Cidades" url="#" />
+					<p:menuitem value="Passagens" url="#" />
+				</p:submenu>
+				<p:submenu label="Trajeto">
+					<p:menuitem value="Mapa" url="#" />
+				</p:submenu>
+				<p:submenu>
+					<p:menuitem value="Sair" url="#" icon="ui-icon ui-icon-power" />
+				</p:submenu>
+			</p:menu>
+		</p:layoutUnit>
+		<p:layoutUnit position="center" header="Sistema" id="conteudo">
+			<ui:insert name="conteudo" />
+		</p:layoutUnit>
+		<p:layoutUnit position="bottom" height="50">
 			Desenvolvido por Helisam
 			</p:layoutUnit>
-		</p:layout>
-	</h:form>
-
-	<div>
-		<ui:insert name="Conteudo"> Aqui vai o conteudo </ui:insert>
-	</div>
-
+	</p:layout>
 </h:body>
 </html>
