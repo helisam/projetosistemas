@@ -7,19 +7,19 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class LinkBean {
 	public String linkBarco() {
-		return "linkBarco.xhtml?faces-redirect=true";
+		return "barco?faces-redirect=true";
 	}
 
 	public String linkProprietario() {
-		return "linkProprietario?faces-redirect=true";
+		return "proprietario?faces-redirect=true";
 	}
 
 	public String linkItinerario() {
-		return "linkItinerario?faces-redirect=true";
+		return "itinerario?faces-redirect=true";
 	}
 
 	public String linkPassagem() {
-		return "linkPassagem?faces-redirect=true";
+		return "passagem?faces-redirect=true";
 	}
 
 	public String listaLinkTrajeto() {

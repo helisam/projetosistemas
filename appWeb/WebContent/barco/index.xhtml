@@ -25,32 +25,32 @@
 							<h:outputLabel id="lbNome" value="*Nome:" for="nome"
 								style="float: right;" />
 							<p:inputText id="nome" size="100" value="#{barcoBean.barco.nome}"
-								required="false" requiredMessage="Campo [Nome] é obrigatório." />
+								required="true" requiredMessage="Campo [Nome] é obrigatório." />
 
 							<h:outputLabel id="lbAno" value="*Ano de Fabricação:"
 								for="anoFabricacao" style="float: right;" />
 							<p:inputText id="anoFabricacao" size="20"
-								value="#{barcoBean.barco.anoFabricacao}" required="false"
+								value="#{barcoBean.barco.anoFabricacao}" required="true"
 								requiredMessage="Campo [Ano de Fabricação] é obrigatório.">
 							</p:inputText>
 
 							<h:outputLabel id="lbCapacidade" value="*Capacidade:"
 								for="capacidade" style="float: right;" />
 							<p:inputText id="capacidade" size="100"
-								value="#{barcoBean.barco.capacidade}" required="false"
+								value="#{barcoBean.barco.capacidade}" required="true"
 								requiredMessage="Campo [Capacidade] é obrigatório.">
 							</p:inputText>
 
 							<h:outputLabel id="lbDescricao" value="*Descrição:"
 								for="descricao" style="float: right;" />
 							<p:inputText id="descricao" size="100"
-								value="#{barcoBean.barco.descricao}" required="false"
+								value="#{barcoBean.barco.descricao}" required="true"
 								requiredMessage="Campo [Descrição] é obrigatório." />
 
 							<h:outputLabel id="lbProprietario" value="*Proprietario: "
 								for="proprietario" style="float: right;" />
 							<h:selectOneMenu id="proprietario"
-								value="#{barcoBean.proprietarioID}" required="false"
+								value="#{barcoBean.proprietarioID}" required="true"
 								requiredMessage="Campo [Proprietario] é obrigatório.">
 								<f:selectItem itemLabel="Escolha ..." itemValue="" />
 								<f:selectItems value="#{proprietarioBean.proprietarios}"
@@ -60,7 +60,7 @@
 							<h:outputLabel id="lbItinerario" value="*Itinerário: "
 								for="itinerario" style="float: right;" />
 							<h:selectOneMenu id="itinerario"
-								value="#{barcoBean.itinerarioID}" required="false"
+								value="#{barcoBean.itinerarioID}" required="true"
 								requiredMessage="Campo [Itinerário] é obrigatório.">
 								<f:selectItem itemLabel="Escolha ..." itemValue="" />
 								<f:selectItems value="#{itinerarioBean.itinerarios}" var="iti"
