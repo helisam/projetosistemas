@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet"
+		href="/EmBarcado2/template/css/embarco.css" />
+	<title>Sistema EmBarco</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+
+		<p:layout fullPage="true">
+			<p:layoutUnit position="top" height="60">
+			texto
+				<p:breadCrumb>
+
+					<p:menuitem value="Home" url="index.xhtml" />
+					<p:menuitem value="Barcos" onclick="#{linkBean.linkBarco()}"
+						immediate="true" />
+					<p:menuitem value="Itinerarios" url="#{linkBean.linkBarco()}" />
+					<p:menuitem value="Proprietarios" oncomplete="linkBarco.xhtml" />
+					<p:menuitem value="Cidades" url="#" />
+					<p:menuitem value="Passagens" url="#{linkBean.linkPassagem()}" />
+				</p:breadCrumb>
+			</p:layoutUnit>
+			<p:layoutUnit position="left" width="180" header="Menu"
+				collapsible="true">
+				<p:menu style="width: 93%">
+					<p:submenu label="Cadastros">
+						<p:menuitem value="Home" url="#" />
+						<p:menuitem value="Barcos" url="#{linkBean.linkBarco()}" />
+						<p:menuitem value="Itinerarios" url="#" />
+						<p:menuitem value="Proprietarios" url="#" />
+						<p:menuitem value="Cidades" url="#" />
+						<p:menuitem value="Passagens" url="#" />
+					</p:submenu>
+					<p:submenu label="Trajeto">
+						<p:menuitem value="Mapa" url="#" />
+					</p:submenu>
+					<p:submenu>
+						<p:menuitem value="Sair" url="#" icon="ui-icon ui-icon-power" />
+					</p:submenu>
+				</p:menu>
+			</p:layoutUnit>
+			<p:layoutUnit position="center" header="Sistema" id="conteudo">
+				<ui:insert name="conteudo" />
+			</p:layoutUnit>
+			<p:layoutUnit position="bottom" height="50">
+			Desenvolvido por Helisam
+			</p:layoutUnit>
+		</p:layout>
+	</h:form>
+
+	<div>
+		<ui:insert name="Conteudo"> Aqui vai o conteudo </ui:insert>
+	</div>
+
+</h:body>
+</html>

@@ -77,6 +77,7 @@ public class BarcoBean {
 		this.barcos = null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Barco> getBarcos() {
 		if (barcos == null) {
 			BarcoRepository repository = new BarcoRepository(this.getManager());

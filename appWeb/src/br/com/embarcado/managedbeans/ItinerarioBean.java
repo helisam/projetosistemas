@@ -65,6 +65,7 @@ public class ItinerarioBean {
 		this.itinerario = itinerario;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Itinerario> getItinerarios() {
 		if (itinerarios == null) {
 			ItinerarioRepository repository = new ItinerarioRepository(this.getManager());
