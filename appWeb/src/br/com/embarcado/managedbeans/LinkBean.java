@@ -8,23 +8,31 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class LinkBean {
 	public String linkBarco() {
-		return "/barco/";
+		return "/barco";
 	}
 
 	public String linkProprietario() {
-		return "proprietario";
+		return "/proprietario";
 	}
 
 	public String linkItinerario() {
-		return "itinerario";
+		return "/itinerario";
 	}
 
 	public String linkPassagem() {
-		return "passagem?faces-redirect=true";
+		return "/passagem";
+	}
+	
+	public String linkCidade() {
+		return "/cidade";
 	}
 
 	public String listaLinkTrajeto() {
 		return "index?faces-redirect=true";
+	}
+	
+	public String linkHome() {
+		return "/index.xhtml";
 	}
 	
 	 public String logout() {

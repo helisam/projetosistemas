@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<h:head>
+	<title></title>
+</h:head>
+<h:body>
+
+	<p:ajaxStatus
+		style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+		<f:facet name="start">
+			<p:graphicImage value="EmBarcado2/template/imagens/loading.gif" />
+		</f:facet>
+
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<h:form id="form" enctype="multipart/form-data">
+		<p:growl id="msgs" showDetail="false" showSummary="true" />
+
+		<p:panel>
+			<h:panelGrid columns="2">
+				<h:outputText value="Nome:" />
+				<p:inputText value="#{cidadeBean.cidade.nome}" />
+				
+				<h:outputText value="Descrição:" />
+				<p:inputText value="#{cidadeBean.cidade.descricao}" />
+				
+				<h:outputText value="Estado:" />
+				<h:selectOneMenu id="estado" value="#{cidadeBean.estadoID}"
+					required="false" requiredMessage="Campo [Estado] é obrigatório.">
+					<f:selectItem itemLabel="Escolha ..." itemValue="" />
+					<f:selectItems value="#{estadoBean.estados}" var="est"
+						itemLabel="#{est.sigla}" itemValue="#{est.id}" />
+				</h:selectOneMenu>
+
+				<p:commandButton value="Salvar" action="#{cidadeBean.save()}"
+					update=":form:msgs, :form:dtCidades, :form" />
+				<p:commandButton value="Limpar" onclick="form.reset()" />
+			</h:panelGrid>
+		</p:panel>
+
+		<p:dataTable id="dtCidades" value="#{cidadeBean.cidades}" var="c"
+			style="text-align: center;" emptyMessage="Nenhuma cidade cadastrada.">
+			<p:column headerText="ID" style="width:2%; font-weight: bold;">
+				<h:outputText value="#{c.id}" />
+			</p:column>
+
+			<p:column headerText="Nome" style="width:24%">
+				<h:outputText value="#{c.nome}" />
+			</p:column>
+			<p:column headerText="Descrição" style="width:24%">
+				<h:outputText value="#{c.descricao}" />
+			</p:column>
+			<p:column headerText="Estado" style="width:24%">
+				<h:outputText value="#{c.estado.nome}" />
+			</p:column>
+
+			<p:column style="width:4%">
+				<p:commandButton id="addButton" update=":form:infoFoto"
+					oncomplete="fotoDialog.show()" icon="ui-icon-plus"
+					title="Adicionar imagens">
+					<f:setPropertyActionListener value="#{c}"
+						target="#{cidadeBean.cidadeSelecionada}" />
+				</p:commandButton>
+
+				<p:spacer width="10" />
+
+				<p:commandButton id="showButton" update=":form:infoCidade"
+					oncomplete="cidadeDialog.show()" icon="ui-icon-search"
+					title="Visualizar imagens"
+					action="#{cidadeBean.listaFotosCidades()}">
+					<f:setPropertyActionListener value="#{c}"
+						target="#{cidadeBean.cidadeSelecionada}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+
+		<p:dialog header="Detalhes da cidade" widgetVar="cidadeDialog"
+			resizable="false" id="cidadeDlg" showEffect="fade"
+			hideEffect="explode" modal="true" draggable="true" maximizable="true"
+			minimizable="true">
+
+			<h:panelGrid id="infoCidade" columns="2" style="margin:0 auto;">
+
+				<h:outputText value="Nenhuma imagem encontrada"
+					rendered="#{cidadeBean.cidades.size() == 0}" />
+
+				<p:galleria var="f" value="#{cidadeBean.cidades}" effect="slide"
+					effectSpeed="100" panelHeight="250" panelWidth="500"
+					frameHeight="70" frameWidth="160" filmstripPosition="bottom"
+					showOverlays="true" showCaption="true">
+
+					<p:graphicImage value="/temp/#{f.id}.jpg" cache="false" width="500"
+						height="250" title="#{f.descricao}" />
+				</p:galleria>
+			</h:panelGrid>
+		</p:dialog>
+
+		<p:dialog header="Adicionar imagens" widgetVar="fotoDialog"
+			position="center" resizable="false" id="fotoDlg" showEffect="fade"
+			hideEffect="explode" modal="true" width="800">
+
+			<h:panelGrid id="infoFoto" columns="2">
+
+				<h:outputText value="Foto: " />
+				<p:fileUpload fileUploadListener="#{cidadeBean.processFileUpload()}"
+					label="Escolher" cancelLabel="Cancelar" sizeLimit="400000"
+					invalidSizeMessage="Imagem muito grande" auto="true"
+					invalidFileMessage="Tipo de imagem não suportado"
+					allowTypes="/(\.|\/)(jpe?g|png)$/" />
+
+				<h:outputText value="Descrição: " />
+				<p:inputText value="#{cidadeBean.cidade.descricao}" />
+
+				<p:commandButton value="Adicionar" icon="ui-icon-plus"
+					action="#{cidadeBean.save()}" update="infoFoto, form" />
+
+			</h:panelGrid>
+		</p:dialog>
+	</h:form>
+</h:body>
+</html>

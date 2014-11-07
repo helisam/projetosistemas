@@ -1,5 +1,6 @@
 package br.com.embarcado.managedbeans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -18,10 +19,11 @@ import br.com.embarcado.repository.ProprietarioRepository;
 
 @ManagedBean
 @SessionScoped
-public class BarcoBean {
+public class BarcoBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	private Barco barcoSelecionado;
-	
+
 	public Barco getBarcoSelecionado() {
 		return barcoSelecionado;
 	}
@@ -34,14 +36,15 @@ public class BarcoBean {
 	private List<Barco> barcos = null;
 	private Long proprietarioID;
 	private Long itinerarioID;
-	
+
 	public void save() {
 		ProprietarioRepository propRepository = new ProprietarioRepository(
 				this.getManager());
 		Proprietario proprietario = propRepository.search(proprietarioID);
-		
-		ItinerarioRepository itiRepository = new ItinerarioRepository(this.getManager());
-		Itinerario itinerario = itiRepository.search(itinerarioID); 
+
+		ItinerarioRepository itiRepository = new ItinerarioRepository(
+				this.getManager());
+		Itinerario itinerario = itiRepository.search(itinerarioID);
 		this.barco.setProprietario(proprietario);
 		this.barco.setItinerario(itinerario);
 
@@ -56,7 +59,8 @@ public class BarcoBean {
 		ProprietarioRepository propRepository = new ProprietarioRepository(
 				this.getManager());
 		Proprietario proprietario = propRepository.search(proprietarioID);
-		ItinerarioRepository itiRepository = new ItinerarioRepository(this.getManager());
+		ItinerarioRepository itiRepository = new ItinerarioRepository(
+				this.getManager());
 		Itinerario itinerario = itiRepository.search(itinerarioID);
 		this.barco.setProprietario(proprietario);
 		this.barco.setItinerario(itinerario);
@@ -85,7 +89,7 @@ public class BarcoBean {
 		}
 		return this.barcos;
 	}
-	
+
 	public void setBarcos(List<Barco> barcos) {
 		this.barcos = barcos;
 	}
@@ -99,7 +103,7 @@ public class BarcoBean {
 		this.setBarco(barco);
 		this.setProprietarioID(this.getBarco().getProprietario().getId());
 		this.setItinerarioID(this.getBarco().getItinerario().getId());
-		
+
 		return "index?faces-redirect=true";
 	}
 
@@ -118,7 +122,7 @@ public class BarcoBean {
 	public void setProprietarioID(Long proprietarioID) {
 		this.proprietarioID = proprietarioID;
 	}
-	
+
 	public Long getItinerarioID() {
 		return itinerarioID;
 	}

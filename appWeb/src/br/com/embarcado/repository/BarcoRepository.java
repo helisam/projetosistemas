@@ -8,7 +8,7 @@ import br.com.embarcado.entities.Barco;
 
 public class BarcoRepository {
 	private EntityManager entityManager;
-	
+
 	public BarcoRepository(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
@@ -23,12 +23,12 @@ public class BarcoRepository {
 		barcoTemp = this.entityManager.find(Barco.class, barco.getId());
 		this.entityManager.remove(barcoTemp);
 	}
-	
-	public void update(Barco barco){
+
+	public void update(Barco barco) {
 		this.entityManager.merge(barco);
 		this.entityManager.flush();
 	}
-	
+
 	public Barco find(Long ID) {
 		return this.entityManager.find(Barco.class, ID);
 	}

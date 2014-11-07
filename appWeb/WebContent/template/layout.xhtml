@@ -20,10 +20,10 @@
 			<h:form>
 				<p:breadCrumb>
 
-					<p:menuitem value="Home" url="index.xhtml" />
+					<p:menuitem value="Home" url="#{linkBean.linkHome()}" />
 					<p:menuitem value="Barcos" onclick="#{linkBean.linkBarco()}" />
-					<p:menuitem value="Itinerarios" url="#{linkBean.linkBarco()}" />
-					<p:menuitem value="Proprietarios" oncomplete="linkBarco.xhtml" />
+					<p:menuitem value="Itinerarios" onclick="#{linkBean.linkItinerario()}" />
+					<p:menuitem value="Proprietarios" oncomplete="#{linkBean}" />
 					<p:menuitem value="Cidades"  outcome="/barco/index"  />
 					<p:menuitem value="Passagens" url="#{linkBean.linkPassagem()}" />
 				</p:breadCrumb>
@@ -35,13 +35,13 @@
 				<p:submenu label="Cadastros">
 					<p:menuitem value="Home" url="#" />
 					<p:menuitem value="Barcos" url="#{linkBean.linkBarco()}" />
-					<p:menuitem value="Itinerarios" url="#" />
-					<p:menuitem value="Proprietarios" url="#" />
-					<p:menuitem value="Cidades" url="#" />
-					<p:menuitem value="Passagens" url="#" />
+					<p:menuitem value="Itinerarios" url="#{linkBean.linkItinerario()}" />
+					<p:menuitem value="Proprietarios" url="#{linkBean.linkProprietario()}" />
+					<p:menuitem value="Cidades" url="#{linkBean.linkCidade()}" />
+					<p:menuitem value="Passagens" url="#{linkBean.linkPassagem()}" />
 				</p:submenu>
 				<p:submenu label="Trajeto">
-					<p:menuitem value="Mapa" url="#" />
+					<p:menuitem value="Mapa" url="#{linkBean.listaLinkTrajeto()}" />
 				</p:submenu>
 				<p:submenu>
 					<p:menuitem value="Sair" url="#{linkBean.logout()}" icon="ui-icon ui-icon-power" />

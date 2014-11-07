@@ -1,5 +1,6 @@
 package br.com.embarcado.managedbeans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,16 +16,17 @@ import br.com.embarcado.repository.ItinerarioRepository;
 
 @ManagedBean
 @SessionScoped
-public class ItinerarioBean {
+public class ItinerarioBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	private Itinerario itinerario = new Itinerario();
 	private List<Itinerario> itinerarios = null;
-	
+
 	public void save() {
 		ItinerarioRepository repository = new ItinerarioRepository(
 				this.getManager());
 		repository.save(this.itinerario);
-		
+
 		this.itinerario = new Itinerario();
 		this.itinerarios = null;
 	}
@@ -34,13 +36,14 @@ public class ItinerarioBean {
 				this.getManager());
 		repository.search(this.itinerario.getId());
 		repository.update(this.itinerario);
-		
+
 		this.itinerario = new Itinerario();
 		this.itinerarios = null;
 	}
-	
+
 	public void remove(Itinerario itinerario) {
-		ItinerarioRepository repository = new ItinerarioRepository(this.getManager());
+		ItinerarioRepository repository = new ItinerarioRepository(
+				this.getManager());
 		repository.remove(itinerario);
 
 		this.itinerario = null;
@@ -68,7 +71,8 @@ public class ItinerarioBean {
 	@SuppressWarnings("unchecked")
 	public List<Itinerario> getItinerarios() {
 		if (itinerarios == null) {
-			ItinerarioRepository repository = new ItinerarioRepository(this.getManager());
+			ItinerarioRepository repository = new ItinerarioRepository(
+					this.getManager());
 			itinerarios = repository.getItinerarios();
 		}
 		return this.itinerarios;
