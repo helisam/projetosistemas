@@ -2,20 +2,21 @@ package br.com.embarcado.managedbeans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
 public class LinkBean {
 	public String linkBarco() {
-		return "barco?faces-redirect=true";
+		return "/barco/";
 	}
 
 	public String linkProprietario() {
-		return "proprietario?faces-redirect=true";
+		return "proprietario";
 	}
 
 	public String linkItinerario() {
-		return "itinerario?faces-redirect=true";
+		return "itinerario";
 	}
 
 	public String linkPassagem() {
@@ -25,4 +26,9 @@ public class LinkBean {
 	public String listaLinkTrajeto() {
 		return "index?faces-redirect=true";
 	}
+	
+	 public String logout() {
+	        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	        return "/login.xhtml?faces-redirect=true";
+	    }
 }

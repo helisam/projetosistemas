@@ -24,7 +24,7 @@
 					<p:menuitem value="Barcos" onclick="#{linkBean.linkBarco()}" />
 					<p:menuitem value="Itinerarios" url="#{linkBean.linkBarco()}" />
 					<p:menuitem value="Proprietarios" oncomplete="linkBarco.xhtml" />
-					<p:menuitem value="Cidades" url="#" />
+					<p:menuitem value="Cidades"  outcome="/barco/index"  />
 					<p:menuitem value="Passagens" url="#{linkBean.linkPassagem()}" />
 				</p:breadCrumb>
 			</h:form>
@@ -44,7 +44,7 @@
 					<p:menuitem value="Mapa" url="#" />
 				</p:submenu>
 				<p:submenu>
-					<p:menuitem value="Sair" url="#" icon="ui-icon ui-icon-power" />
+					<p:menuitem value="Sair" url="#{linkBean.logout()}" icon="ui-icon ui-icon-power" />
 				</p:submenu>
 			</p:menu>
 		</p:layoutUnit>
