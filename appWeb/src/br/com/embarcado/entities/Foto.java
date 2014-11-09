@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,9 +24,6 @@ public class Foto implements Serializable {
 	private byte[] imagem;
 	@Column(name = "foto_DESCRICAO")
 	private String descricao;
-	@ManyToOne
-	@JoinColumn(name = "cidade_ID")
-	private Cidade cidade;
 
 	public long getId() {
 		return id;
@@ -52,13 +47,5 @@ public class Foto implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public Cidade getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
 	}
 }

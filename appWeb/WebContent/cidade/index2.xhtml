@@ -21,7 +21,7 @@
 		</f:facet>
 	</p:ajaxStatus>
 
-	<h:form id="form" enctype="multipart/form-data">
+	<h:form id="form">
 		<p:growl id="msgs" showDetail="false" showSummary="true" />
 
 		<p:panel>
@@ -114,7 +114,7 @@
 					label="Escolher" cancelLabel="Cancelar" sizeLimit="400000"
 					invalidSizeMessage="Imagem muito grande" auto="true"
 					invalidFileMessage="Tipo de imagem não suportado"
-					allowTypes="/(\.|\/)(jpe?g|png)$/" />
+					 />
 
 				<h:outputText value="Descrição: " />
 				<p:inputText value="#{cidadeBean.cidade.descricao}" />

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="conteudo">
+		<f:view>
+			<h:head>
+				<title></title>
+			</h:head>
+
+			<p:spacer height="10" />
+
+			<h:body>
+				<h:form id="frmGeral" prependId="false">
+					<p:fieldset legend="Manter Cidade"
+						toggleable="true">
+						<p:messages id="messages" />
+
+						<h:panelGrid columns="2" id="pnPorra"
+							style="font-family: Verdana, Arial; font-weight: bold;">
+							<h:outputLabel id="lbNome" value="*Nome:" for="nome"
+								style="float: right;" />
+							<p:inputText id="nome" size="100" value="#{cidadeBean.cidade.nome}"
+								required="false" requiredMessage="Campo [Nome] é obrigatório." />
+
+							<h:outputLabel id="lbDescricao" value="*Descrição:"
+								for="descricao" style="float: right;" />
+							<p:inputText id="descricao" size="20"
+								value="#{cidadeBean.cidade.descricao}" required="false"
+								requiredMessage="Campo [Descrição] é obrigatório.">
+							</p:inputText>
+
+							<h:outputLabel id="lbimagem" value="*Imagem:"
+								for="imagem" style="float: right;" />
+							<p:inputText id="imagem" size="100"
+								value="#{cidadeBean.cidade.imagem}" required="false"
+								requiredMessage="Campo [Imagem] é obrigatório.">
+							</p:inputText>
+
+							<h:outputLabel id="lbEstado" value="*Estado: "
+								for="estado" style="float: right;" />
+							<h:selectOneMenu id="estado"
+								value="#{cidadeBean.estadoID}" required="false"
+								requiredMessage="Campo [Estado] é obrigatório.">
+								<f:selectItem itemLabel="Escolha ..." itemValue="" />
+								<f:selectItems value="#{estadoBean.estados}" var="uf"
+									itemLabel="#{uf.sigla}" itemValue="#{uf.id}" />
+							</h:selectOneMenu>
+						</h:panelGrid>
+						<center>
+							<h:panelGrid columns="2"
+								style="font-size: 12px; font-weight: bold;">
+								<p:commandButton value="Adicionar Cidade"
+									action="#{cidadeBean.save()}"
+									update="frmGeral, messages, dtCidades" />
+								<p:commandButton value="Alterar Cidade"
+									action="#{cidadeBean.update()}"
+									update="frmGeral, messages, dtCidades" />
+							</h:panelGrid>
+						</center>
+
+						<p:spacer height="10" />
+
+						<p:dataTable id="dtCidades"
+							emptyMessage="Nenhum registro encontrado."
+							value="#{cidadeBean.cidades}" var="c"
+							style="text-align: center; font-weight: bold;" height="70">
+							<f:facet name="header">
+								<h:outputText value="Registro de Cidades" />
+							</f:facet>
+
+							<p:column id="colunaNome" filterBy="#{c.nome}"
+								headerText="Filtrar por nome" filterMatchMode="contains">
+								<f:facet name="header">
+									<h:outputText value="Nome" />
+								</f:facet>
+								<h:outputText value="#{c.nome}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Descrição" />
+								</f:facet>
+								<h:outputText value="#{c.descricao}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Estado" />
+								</f:facet>
+								<h:outputText value="#{c.estado.nome}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Imagem" />
+								</f:facet>
+								<h:outputText value="#{c.imagem}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Remover" />
+								</f:facet>
+								<f:ajax event="click" render="@form"
+									listener="#{cidadeBean.remove(c)}">
+									<h:commandLink value="Remover" />
+								</f:ajax>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Alterar" />
+								</f:facet>
+								<h:commandLink value="Alterar">
+									<p:ajax event="click" listener="#{cidadeBean.preparaAlterar(c)}"
+										update="@form" />
+								</h:commandLink>
+							</p:column>
+
+							<f:facet name="footer">
+								<h:outputText
+									value="Há um total de #{cidadeBean.count} Cidade(s) cadastrada(s) no sistema." />
+							</f:facet>
+						</p:dataTable>
+					</p:fieldset>
+				</h:form>
+				<p:dialog modal="true" widgetVar="cadProprietario"
+					showEffect="slide" hideEffect="explode" resizable="false"
+					width="400" appendToBody="true"
+					header="Cadastrar novo Proprietario de Barco">
+
+					<h:form id="frmProprietario">
+						<p:growl id="msgProprietario" />
+
+						<h:panelGrid columns="2">
+							<h:outputLabel id="lbNome" value="Nome:" for="nome"
+								style="float: right;" />
+							<p:inputText id="nome" size="50"
+								value="#{proprietarioBean.proprietario.nome}" required="true"
+								requiredMessage="Campo [Nome] é obrigatório." />
+
+							<h:outputLabel id="lbCPF" value="CPF:" for="cpf"
+								style="float: right;" />
+							<p:inputText id="cpf" size="50"
+								value="#{proprietarioBean.proprietario.cpf}" required="true"
+								requiredMessage="Campo [CPF] é obrigatório." />
+
+							<h:outputLabel id="lbMail" value="E-mail:" for="mail"
+								style="float: right;" />
+							<p:inputText id="mail" size="50"
+								value="#{proprietarioBean.proprietario.mail}" required="true"
+								requiredMessage="Campo [E-mail] é obrigatório." />
+
+							<h:outputLabel id="lbFone" value="Fone:" for="fone"
+								style="float: right;" />
+							<p:inputText id="fone" size="50"
+								value="#{proprietarioBean.proprietario.fone}" required="true"
+								requiredMessage="Campo [Fone] é obrigatório." />
+
+							<p:commandButton value="Salvar"
+								action="#{proprietarioBean.save()}"
+								update="msgProprietario,frmProprietario,frmGeral"
+								oncomplete="cadProprietario.hide()" />
+						</h:panelGrid>
+					</h:form>
+				</p:dialog>
+				<p:dialog modal="true" widgetVar="cadItinerario" showEffect="slide"
+					hideEffect="explode" resizable="false" width="500"
+					appendToBody="true" header="Cadastrar novo Itinerário de Barco">
+					<h:form id="frmItinerario">
+						<p:growl id="msgItinerario" />
+
+						<h:panelGrid columns="2">
+							<h:outputLabel id="lbDestino" value="Destino:" for="destino"
+								style="float: right;" />
+							<p:inputText id="destino" size="50"
+								value="#{itinerarioBean.itinerario.destino}" required="true"
+								requiredMessage="Campo [Destino] é obrigatório." />
+
+							<h:outputLabel id="lbPartida" value="Local de Partida:"
+								for="partida" style="float: right;" />
+							<p:inputText id="partida" size="50"
+								value="#{itinerarioBean.itinerario.localPartida}"
+								required="true"
+								requiredMessage="Campo [Local de Partida] é obrigatório." />
+
+							<h:outputLabel id="lbSaida" value="Horário de Saída:" for="saida"
+								style="float: right;" />
+							<p:inputText id="saida" size="50"
+								value="#{itinerarioBean.itinerario.horaSaida}" required="true"
+								requiredMessage="Campo [Horário de Saída] é obrigatório." />
+
+							<h:outputLabel id="lbChegada" value="Horário de Chegada:"
+								for="chegada" style="float: right;" />
+							<p:inputText id="chegada" size="50"
+								value="#{itinerarioBean.itinerario.horaChegada}" required="true"
+								requiredMessage="Campo [Horário de Chegada] é obrigatório." />
+
+							<h:outputLabel id="lbDistancia" value="Distância (KM):"
+								for="distancia" style="float: right;" />
+							<p:inputText id="distancia" size="50"
+								value="#{itinerarioBean.itinerario.distancia}" required="true"
+								requiredMessage="Campo [Distância (KM)] é obrigatório." />
+
+							<h:outputLabel id="lbObservacao" value="Observação:" for="obs"
+								style="float: right;" />
+							<p:inputText id="obs" size="50"
+								value="#{itinerarioBean.itinerario.observacao}" required="false" />
+
+							<h:outputLabel id="lbData" value="Dias de Partida:" for="data"
+								style="float: right;" />
+							<p:inputText id="data" size="50"
+								value="#{itinerarioBean.itinerario.data}" required="true"
+								requiredMessage="Campo [Dias de Partida] é obrigatório." />
+
+							<p:commandButton value="Salvar" action="#{itinerarioBean.save()}"
+								update="msgItinerario, frmItinerario, frmGeral"
+								oncomplete="cadItinerario.hide()" />
+						</h:panelGrid>
+					</h:form>
+				</p:dialog>
+				<p:dialog modal="false" widgetVar="viewItinerario"
+					showEffect="slide" hideEffect="explode" resizable="false"
+					width="500" appendToBody="true"
+					header="Detalhes do Itinerário de Barco">
+					<h:form id="frmItinerario2">
+						<p:growl id="msgItinerario2" />
+						<h:panelGrid columns="2">
+							<h:outputLabel id="lbDestino" value="Destino:" for="destino"
+								style="float: right;" />
+							<h:outputText
+								value="#{barcoBean.barcoSelecionado.itinerario.destino}" />
+
+							<h:outputLabel id="lbPartida" value="Local de Partida:"
+								for="partida" style="float: right;" />
+							<h:outputText
+								value="#{barcoBean.barcoSelecionado.itinerario.localPartida}" />
+
+							<h:outputLabel id="lbSaida" value="Horário de Saída:" for="saida"
+								style="float: right;" />
+							<h:outputText
+								value="#{barcoBean.barcoSelecionado.itinerario.horaSaida}" />
+
+							<h:outputLabel id="lbChegada" value="Horário de Chegada:"
+								for="chegada" style="float: right;" />
+							<h:outputText
+								value="#{barcoBean.barcoSelecionado.itinerario.horaChegada}" />
+
+							<h:outputLabel id="lbDistancia" value="Distância (KM):"
+								for="distancia" style="float: right;" />
+							<h:outputText
+								value="#{barcoBean.barcoSelecionado.itinerario.distancia}" />
+
+							<h:outputLabel id="lbObservacao" value="Observação:" for="obs"
+								style="float: right;" />
+							<h:outputText
+								value="#{barcoBean.barcoSelecionado.itinerario.observacao}" />
+
+							<h:outputLabel id="lbData" value="Dias de Partida:" for="data"
+								style="float: right;" />
+							<h:outputText
+								value="#{barcoBean.barcoSelecionado.itinerario.data}" />
+						</h:panelGrid>
+					</h:form>
+				</p:dialog>
+			</h:body>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

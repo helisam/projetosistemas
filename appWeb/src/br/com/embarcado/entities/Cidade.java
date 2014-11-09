@@ -24,19 +24,21 @@ public class Cidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "cidade_ID")
 	private Long id;
 	@Column(name = "cidade_NOME")
 	private String nome;
-	@OneToOne
-	@JoinColumn(name = "estado_ID")
-	private Estado estado;
+	@Column(name = "cidade_DESCRICAO")
+	private String descricao;
 	@Lob
 	@Column(name = "cidade_FOTO", columnDefinition = "LONGBLOB")
 	private byte[] imagem;
-	@Column(name = "cidade_FOTODESCRICAO")
-	private String descricao;
+	@OneToOne
+	@JoinColumn(name = "estado_ID")
+	private Estado estado;
+	
+	
 
 	public Long getId() {
 		return id;
