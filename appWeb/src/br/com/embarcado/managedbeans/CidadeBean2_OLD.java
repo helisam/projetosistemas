@@ -1,5 +1,6 @@
 package br.com.embarcado.managedbeans;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -14,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
 
 import br.com.embarcado.dao.CidadeDAO;
 import br.com.embarcado.dao.FotoDAO;
@@ -22,7 +24,7 @@ import br.com.embarcado.entities.Foto;
 
 @ManagedBean
 @SessionScoped
-public class CidadeBean2 implements Serializable {
+public class CidadeBean2_OLD implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private List<Cidade> cidades;
@@ -34,7 +36,7 @@ public class CidadeBean2 implements Serializable {
 	private Foto foto = new Foto();
 	private FotoDAO fotoDAO = new FotoDAO();
 
-	public CidadeBean2() {
+	public CidadeBean2_OLD() {
 		cidadeDAO = new CidadeDAO();
 		fotoDAO = new FotoDAO();
 
@@ -71,7 +73,7 @@ public class CidadeBean2 implements Serializable {
 		}
 	}
 
-	public void processFileUpload(FileUploadEvent uploadEvent) {
+	/*public void processFileUpload(FileUploadEvent uploadEvent) {
 
 		try {
 			foto.setCidade(cidadeSelecionada);
@@ -81,7 +83,7 @@ public class CidadeBean2 implements Serializable {
 		} finally {
 			
 		}
-	}
+	}*/
 	
 	public void listaFotosCidade(){
 		try {
@@ -96,7 +98,7 @@ public class CidadeBean2 implements Serializable {
 				String nomeArquivo = f.getId() + ".jpg";
 				String arquivo = sContext.getRealPath("/temp") + File.separator + nomeArquivo;
 				
-				criaArquivo(f.getImagem(), arquivo);
+//				criaArquivo(f.getImagem(), arquivo);
 			}
 			
 		} catch (Exception e) {
@@ -118,7 +120,7 @@ public class CidadeBean2 implements Serializable {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public List<Cidade> getCidades() {
 		return cidades;
 	}
