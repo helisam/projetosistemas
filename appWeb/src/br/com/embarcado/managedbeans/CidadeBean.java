@@ -35,7 +35,7 @@ public class CidadeBean implements Serializable {
 	 * AJEITAR ESSA CONSTANTE MÁGINA
 	 * -------------------------------------------------------
 	 */
-	File file = new File("C:/Users/helisam.bentes/workspace2/EmBarcado2");
+	File file = new File("C:/Users/helisam.bentes/Desktop/ProjetoGit/Embarcado/appWeb");
 	/* ----------------------------------------------------- */
 
 	private Cidade cidade = new Cidade();
@@ -232,7 +232,7 @@ public class CidadeBean implements Serializable {
 			byte[] arquivo = event.getFile().getContents();
 			String caminho = file + "/WebContent/upload/"
 					+ event.getFile().getFileName();
-
+			
 			// esse trecho grava o arquivo no diretório
 			FileOutputStream fos = new FileOutputStream(caminho);
 			fos.write(arquivo);
