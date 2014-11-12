@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,11 +22,9 @@ public class Foto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "foto_ID")
 	private long id;
-	@Lob
-	@Column(name = "foto_IMAGEM", columnDefinition = "LONGBLOB")
-	private byte[] imagem;
+	@Column(name = "foto_IMAGEM")
+	private String imagem;
 	
-
 	@Column(name = "foto_DESCRICAO")
 	private String descricao;
 
@@ -51,10 +48,10 @@ public class Foto implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public void setImagem(byte[] imagem) {
+	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
-	public byte[] getImagem() {
+	public String getImagem() {
 		return imagem;
 	}
 

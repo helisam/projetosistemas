@@ -7,7 +7,185 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui">
 <ui:composition template="/template/layout.xhtml">
 	<ui:define name="conteudo">
-	<p>Sendo Implementado -> Cidade</p>
-		</ui:define>
+		<f:view>
+			<h:head>
+				<title></title>
+			</h:head>
+
+			<p:spacer height="10" />
+
+			<h:body>
+				<h:form id="frmGeral" prependId="false"
+					enctype="multipart/form-data">
+					<p:fieldset legend="Manter Cidade" toggleable="true">
+						<p:messages id="messages" />
+
+						<h:panelGrid columns="2" id="pnPorra"
+							style="font-family: Verdana, Arial; font-weight: bold;">
+							<h:outputLabel id="lbNome" value="*Nome:" for="nome"
+								style="float: right;" />
+							<p:inputText id="nome" size="100"
+								value="#{cidadeBean.cidade.nome}" required="false"
+								requiredMessage="Campo [Nome] é obrigatório." />
+
+							<h:outputLabel id="lbDescricao" value="*Descrição:"
+								for="descricao1" style="float: right;" />
+							<p:inputText id="descricao1" size="20"
+								value="#{cidadeBean.cidade.descricao}" required="false"
+								requiredMessage="Campo [Descrição] é obrigatório.">
+							</p:inputText>
+
+							<h:outputLabel id="lbEstado" value="*Estado: " for="estado"
+								style="float: right;" />
+							<h:selectOneMenu id="estado" value="#{cidadeBean.estadoID}"
+								required="false" requiredMessage="Campo [Estado] é obrigatório.">
+								<f:selectItem itemLabel="Escolha ..." itemValue="" />
+								<f:selectItems value="#{estadoBean.estados}" var="uf"
+									itemLabel="#{uf.sigla}" itemValue="#{uf.id}" />
+							</h:selectOneMenu>
+						</h:panelGrid>
+						<center>
+							<h:panelGrid columns="2"
+								style="font-size: 12px; font-weight: bold;">
+								<p:commandButton value="Adicionar Cidade"
+									action="#{cidadeBean.save()}"
+									update="frmGeral, messages, dtCidades" />
+								<p:commandButton value="Alterar Cidade"
+									action="#{cidadeBean.update()}"
+									update="frmGeral, messages, dtCidades" />
+							</h:panelGrid>
+						</center>
+
+						<p:spacer height="10" />
+
+						<p:dataTable id="dtCidades"
+							emptyMessage="Nenhum registro encontrado."
+							value="#{cidadeBean.cidades}" var="c"
+							style="text-align: center; font-weight: bold;" height="70">
+							<f:facet name="header">
+								<h:outputText value="Registro de Cidades" />
+							</f:facet>
+
+							<p:column id="colunaNome" filterBy="#{c.nome}"
+								headerText="Filtrar por nome" filterMatchMode="contains">
+								<f:facet name="header">
+									<h:outputText value="Nome" />
+								</f:facet>
+								<h:outputText value="#{c.nome}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Descrição" />
+								</f:facet>
+								<h:outputText value="#{c.descricao}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Estado" />
+								</f:facet>
+								<h:outputText value="#{c.estado.nome}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Imagem" />
+								</f:facet>
+								<p:commandButton value="+"  
+									update="frmGeral, frmImagem" style="width:25px;height:25px "
+									oncomplete="cadImagem.show()">
+									<f:setPropertyActionListener
+										target="#{cidadeBean.cidadeSelecionada}" value="#{c}" />
+								</p:commandButton>
+								<p:commandButton value="O"
+									update="frmGeral, frmImagem2" style="width:25px;height:25px "
+									oncomplete="viewImagem.show()">
+									<f:setPropertyActionListener
+										target="#{cidadeBean.cidadeSelecionada}" value="#{c}" />
+								</p:commandButton>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Remover" />
+								</f:facet>
+								<f:ajax event="click" render="@form"
+									listener="#{cidadeBean.remove(c)}">
+									<h:commandLink value="Remover" />
+								</f:ajax>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Alterar" />
+								</f:facet>
+								<h:commandLink value="Alterar">
+									<p:ajax event="click"
+										listener="#{cidadeBean.preparaAlterar(c)}" update="@form" />
+								</h:commandLink>
+							</p:column>
+
+							<f:facet name="footer">
+								<h:outputText
+									value="Há um total de #{cidadeBean.count} cidade(s) cadastrada(s) no sistema." />
+							</f:facet>
+						</p:dataTable>
+					</p:fieldset>
+				</h:form>
+				<p:dialog modal="true" widgetVar="cadImagem" showEffect="slide"
+					hideEffect="explode" resizable="false" width="400"
+					appendToBody="true" header="Cadastrar Imagens">
+
+					<h:form id="frmImagem">
+						<p:growl id="msgImagem" />
+
+						<h:panelGrid columns="2">
+
+							<h:outputLabel id="lbCidade" value="Cidade" for="idCidade"
+								style="float: right;" />
+							<p:inputText id="idCidade" size="50"
+								value="#{cidadeBean.cidadeSelecionada.nome}" required="true"
+								disabled="true" />
+
+							<h:outputLabel id="lbDescricao" value="Descrição:"
+								for="descricao" style="float: right;" />
+							<p:inputText id="descricao" size="50"
+								value="#{cidadeBean.descFoto}" required="true"
+								requiredMessage="Campo [Descrição] é obrigatório." />
+
+							<h:outputLabel id="lbImagem" value="Imagem:"
+								style="float: right;" />
+							<p:fileUpload fileUploadListener="#{cidadeBean.fileUploadAction}"
+								sizeLimit="204800" auto="true" image="/imagens/imgBuscar.png"
+								customUI="true" update="outputPanelUpload, frmGeral, dtCidades" />
+
+
+							<p:commandButton value="Salvar" action="#{cidadeBean.saveFoto()}"
+								update="msgImagem,frmImagem,frmGeral"
+								oncomplete="cadImagem.hide()" />
+						</h:panelGrid>
+					</h:form>
+				</p:dialog>
+				<p:dialog modal="true" widgetVar="viewImagem" showEffect="slide"
+					hideEffect="explode" resizable="false" width="425" height="465"
+					appendToBody="true" header="Listar fotos">
+					<h:form id="frmImagem2">
+						<p:growl id="msgImagem2" />
+						<p:commandButton type="button" onclick="switcher.previous();"
+							image="ui-icon ui-icon-circle-triangle-w" />
+						<p:commandButton type="button" onclick="switcher.next();"
+							image="ui-icon ui-icon-circle-triangle-e" />
+						<p:imageSwitch effect="wipe" widgetVar="switcher"
+							slideshowAuto="false" style="width:400px;height:400px">
+							<ui:repeat value="#{cidadeBean.cidadeSelecionada.fotos}" var="foto">
+								<p:graphicImage value="/upload/#{foto.imagem}" height="400px" width="400px" title="#{foto.descricao}" style="align:center"/>
+							</ui:repeat>
+						</p:imageSwitch>
+					</h:form>
+				</p:dialog>
+			</h:body>
+		</f:view>
+	</ui:define>
 </ui:composition>
 </html>

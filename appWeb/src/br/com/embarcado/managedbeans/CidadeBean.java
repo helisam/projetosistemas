@@ -1,11 +1,7 @@
 package br.com.embarcado.managedbeans;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +10,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.imageio.ImageIO;
 import javax.persistence.EntityManager;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 import br.com.embarcado.entities.Cidade;
@@ -38,12 +31,19 @@ import br.com.embarcado.repository.EstadoRepository;
 public class CidadeBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * AJEITAR ESSA CONSTANTE MÁGINA
+	 * -------------------------------------------------------
+	 */
+	File file = new File("C:/Users/helisam.bentes/workspace2/EmBarcado2");
+	/* ----------------------------------------------------- */
+
 	private Cidade cidade = new Cidade();
 	private List<Cidade> cidades = null;
 	private Cidade cidadeSelecionada;
 	private Long estadoID;
 	private String descFoto;
-	private byte[] fotoSelecionada;
+	private String fotoSelecionada;
 
 	private StreamedContent imagemEnviada = null;
 
@@ -59,39 +59,6 @@ public class CidadeBean implements Serializable {
 
 		this.cidade = new Cidade();
 		this.cidades = null;
-	}
-
-	@SuppressWarnings("unchecked")
-	public void listaFotosCidades() {
-		ServletContext sContext = (ServletContext) FacesContext
-				.getCurrentInstance().getExternalContext().getContext();
-		CidadeRepository repository = new CidadeRepository(this.getManager());
-		cidades = (List<Cidade>) repository.find(this.cidade.getId());
-		File folder = new File(sContext.getRealPath("/temp"));
-		if (!folder.exists())
-			folder.mkdirs();
-
-		// for (Cidade cidade : cidades) {
-		// String nomeArquivo = cidade.getId() + ".jpg";
-		// String arquivo = sContext.getRealPath("/temp") + File.separator
-		// + nomeArquivo;
-		//
-		// criaArquivo(cidade.getImagem(), arquivo);
-		// }
-	}
-
-	public void criaArquivo(byte[] bytes, String arquivo) {
-		FileOutputStream fos;
-		try {
-			fos = new FileOutputStream(arquivo);
-			fos.write(bytes);
-			fos.flush();
-			fos.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -189,13 +156,6 @@ public class CidadeBean implements Serializable {
 		return (EntityManager) request.getAttribute("entityManager");
 	}
 
-	public void enviarImagem(FileUploadEvent event) {
-		byte[] img = event.getFile().getContents();
-		setImagemEnviada(new DefaultStreamedContent(new ByteArrayInputStream(
-				img), "image/jpg"));
-		fotoSelecionada = img;
-	}
-
 	public void saveFoto() {
 		if (fotoSelecionada != null) {
 			// Salva foto
@@ -211,7 +171,7 @@ public class CidadeBean implements Serializable {
 		}
 	}
 
-	public byte[] getFotoSelecionada() {
+	public String getFotoSelecionada() {
 		return fotoSelecionada;
 	}
 
@@ -230,29 +190,61 @@ public class CidadeBean implements Serializable {
 		return new ArrayList<Foto>();
 	}
 
-	public StreamedContent getImage2(Foto foto) {
-		try {
-			final BufferedImage bi = ImageIO.read(new ByteArrayInputStream(foto
-					.getImagem()));
-			ImageIO.write(bi, "jpg", new File("C:\\out.jpg"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+	/*
+	 * public StreamedContent getImage2(Foto foto) { try { final BufferedImage
+	 * bi = ImageIO.read(new ByteArrayInputStream(foto .getImagem()));
+	 * ImageIO.write(bi, "jpg", new File("C:\\out.jpg")); } catch (IOException
+	 * e) { e.printStackTrace(); } return null; }
+	 */
+
+	public String getImage(Foto foto) {
+		System.out.println(foto.getImagem());
+		return foto.getImagem();
 	}
 
-	public BufferedImage getImage(Foto foto) {
-		final BufferedImage bi;
-		try {
-			// sua regra para carregar os bytes
-			if (foto != null && foto.getImagem() != null) {
-				bi = ImageIO.read(new ByteArrayInputStream(foto.getImagem()));
+	/*
+	 * public void enviarImagem(FileUploadEvent event) { byte[] img =
+	 * event.getFile().getContents(); setImagemEnviada(new
+	 * DefaultStreamedContent(new ByteArrayInputStream( img), "image/jpg"));
+	 * fotoSelecionada = img; }
+	 */
 
-				return bi;
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
+	public void fileUploadAction(FileUploadEvent event) {
+		try {
+			// ExternalContext externalContext =
+			// FacesContext.getCurrentInstance()
+			// .getExternalContext();
+			// HttpServletResponse response = (HttpServletResponse)
+			// externalContext
+			// .getResponse();
+			//
+			// FacesContext aFacesContext = FacesContext.getCurrentInstance();
+			// ServletContext context = (ServletContext) aFacesContext
+			// .getExternalContext().getContext();
+			//
+			// String realPath = context.getRealPath("/");
+			// System.out.println("realPath: " + realPath);
+			//
+			// Aqui cria o diretorio caso não exista
+
+			file.mkdirs();
+
+			byte[] arquivo = event.getFile().getContents();
+			String caminho = file + "/WebContent/upload/"
+					+ event.getFile().getFileName();
+
+			// esse trecho grava o arquivo no diretório
+			FileOutputStream fos = new FileOutputStream(caminho);
+			fos.write(arquivo);
+			fos.close();
+
+			// esse trecho grava apenas o nome da foto
+			String caminhoLess = event.getFile().getFileName();
+			fotoSelecionada = caminhoLess;
+
+		} catch (Exception ex) {
+			System.out.println("Erro no upload de imagem: " + ex);
 		}
-		return new BufferedImage(1, 1, 1);
 	}
+
 }
