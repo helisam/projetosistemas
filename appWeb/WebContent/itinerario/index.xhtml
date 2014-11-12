@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -7,7 +5,198 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui">
 <ui:composition template="/template/layout.xhtml">
 	<ui:define name="conteudo">
-	<p>Sendo Implementado -> Itinerário</p>
-		</ui:define>
+		<f:view>
+			<h:head>
+				<title></title>
+			</h:head>
+			<p:spacer height="10" />
+			<h:body>
+				<h:form id="frmGeral">
+					<p:fieldset legend="Controle de Itinerários" toggleable="true">
+						<p:messages id="messages" />
+
+						<h:panelGrid columns="2" id="pnIti"
+							style="font-family: Verdana, Arial; font-weight: bold;">
+							<h:outputLabel id="lbDestino" value="*Destino:" for="destino"
+								style="float: right;" />
+							<h:selectOneMenu id="destino" value="#{itinerarioBean.cidadeID}"
+								required="false"
+								requiredMessage="Campo [Destino] é obrigatório.">
+								<f:selectItem itemLabel="Escolha ..." itemValue="" />
+								<f:selectItems value="#{cidadeBean.cidades}" var="city"
+									itemLabel="#{city.nome}" itemValue="#{city.id}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel id="lbLocalPartida" value="*Local de Partida:"
+								for="localpartida" style="float: right;" />
+							<p:inputText id="localpartida" size="100"
+								value="#{itinerarioBean.itinerario.localPartida}"
+								required="false"
+								requiredMessage="Campo [Local de Partida] é obrigatório.">
+							</p:inputText>
+
+							<h:outputLabel id="lbsaida" value="*Horário de Saída:"
+								for="saida" style="float: right;" />
+							<p:inputText id="saida" size="100"
+								value="#{itinerarioBean.itinerario.horaSaida}" required="false"
+								requiredMessage="Campo [Horário de Saída] é obrigatório.">
+							</p:inputText>
+
+							<h:outputLabel id="lbchegada" value="*Horário de Chegada:"
+								for="chegada" style="float: right;" />
+							<p:inputText id="chegada" size="100"
+								value="#{itinerarioBean.itinerario.horaChegada}" required="false"
+								requiredMessage="Campo [Horário de Chegada] é obrigatório." />
+
+							<h:outputLabel id="lbdistancia" value="*Distância (KM):"
+								for="distancia" style="float: right;" />
+							<p:inputText id="distancia" size="100"
+								value="#{itinerarioBean.itinerario.distancia}" required="false"
+								requiredMessage="Campo [Distância (KM)] é obrigatório." />
+
+							<h:outputLabel id="lbobs" value="*Observação:" for="obs"
+								style="float: right;" />
+							<p:inputText id="obs" size="100"
+								value="#{itinerarioBean.itinerario.observacao}" required="false"
+								requiredMessage="Campo [Observação] é obrigatório." />
+
+							<h:outputLabel id="lbdiaspartida" value="*Dias de Partida:"
+								for="diaspartida" style="float: right;" />
+							<p:inputText id="diaspartida" size="100"
+								value="#{itinerarioBean.itinerario.data}" required="false"
+								requiredMessage="Campo [Dias de Partida] é obrigatório." />
+						</h:panelGrid>
+						<center>
+							<h:panelGrid columns="2"
+								style="font-size: 12px; font-weight: bold;">
+								<p:commandButton value="Adicionar Itinerário"
+									action="#{itinerarioBean.save()}"
+									update="frmGeral, messages, dtIti" />
+								<p:commandButton value="Alterar Itinerário"
+									action="#{itinerarioBean.update()}"
+									update="frmGeral, messages, dtIti" />
+							</h:panelGrid>
+						</center>
+
+						<p:spacer height="10" />
+
+						<p:dataTable id="dtIti"
+							emptyMessage="Nenhum registro encontrado."
+							value="#{itinerarioBean.itinerarios}" var="d"
+							style="text-align: center; font-weight: bold;">
+							<f:facet name="header">
+								<h:outputText value="Registro de Itinerários" />
+							</f:facet>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Destino" />
+								</f:facet>
+							<p:commandButton value="#{d.destino.nome}"
+									update="frmGeral, frmCidade"
+									oncomplete="viewCidade.show()" icon="ui-icon-search">
+									<f:setPropertyActionListener
+										target="#{itinerarioBean.itinerarioSelecionado}" value="#{i}" />
+								</p:commandButton>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Local de Partida" />
+								</f:facet>
+								<h:outputText value="#{d.localPartida}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Horário de Saída" />
+								</f:facet>
+								<h:outputText value="#{d.horaSaida}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Horário de Chegada" />
+								</f:facet>
+								<h:outputText value="#{d.horaChegada}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Distância (KM)" />
+								</f:facet>
+								<h:outputText value="#{d.distancia}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Observação" />
+								</f:facet>
+								<h:outputText value="#{d.observacao}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Dias de Partida" />
+								</f:facet>
+								<h:outputText value="#{d.data}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Remover" />
+								</f:facet>
+								<f:ajax event="click" render="@form"
+									listener="#{itinerarioBean.remove(d)}">
+									<h:commandLink value="Remover" />
+								</f:ajax>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Alterar" />
+								</f:facet>
+								<h:commandLink value="Alterar">
+									<p:ajax event="click"
+										listener="#{itinerarioBean.preparaAlterar(d)}"
+										update="@form" />
+								</h:commandLink>
+							</p:column>
+
+							<f:facet name="footer">
+								<h:outputText
+									value="Há um total de #{itinerarioBean.count} Itinerário(s) cadastrado(s) no sistema." />
+							</f:facet>
+						</p:dataTable>
+					</p:fieldset>
+				</h:form>
+					<p:dialog modal="true" widgetVar="viewCidade"
+					showEffect="slide" hideEffect="explode" resizable="false"
+					width="500" appendToBody="true"
+					header="Detalhes da Cidade Destino">
+					<h:form id="frmCidade" >
+						<p:growl id="msgCidade" />
+						<h:panelGrid columns="2">
+						#{itinerarioBean.itinerarios.size()}
+							<h:outputLabel id="lbNomeC" value="Nome:"
+								style="float: right;" />
+							<h:outputText
+								value="#{itinerarioBean.itinerarioSelecionado.destino.nome}" />
+
+							<h:outputLabel id="lbDescriçãoC" value="Descrição:"
+								style="float: right;" />
+							<h:outputText
+								value="#{itinerarioBean.itinerarioSelecionado.destino.descricao}" />
+
+							<h:outputLabel id="estadoC" value="Estado:"
+								style="float: right;" />
+							<h:outputText
+								value="#{itinerarioBean.itinerarioSelecionado.destino.estado.nome}" />
+						</h:panelGrid>
+					</h:form>
+				</p:dialog>
+			</h:body>
+		</f:view>
+	</ui:define>
 </ui:composition>
 </html>

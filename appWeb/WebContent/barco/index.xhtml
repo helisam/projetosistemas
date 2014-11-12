@@ -64,7 +64,7 @@
 								requiredMessage="Campo [Itinerário] é obrigatório.">
 								<f:selectItem itemLabel="Escolha ..." itemValue="" />
 								<f:selectItems value="#{itinerarioBean.itinerarios}" var="iti"
-									itemLabel="#{iti.destino}" itemValue="#{iti.id}" />
+									itemLabel="#{iti.destino.nome}" itemValue="#{iti.id}" />
 							</h:selectOneMenu>
 						</h:panelGrid>
 						<center>

@@ -10,8 +10,10 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
+import br.com.embarcado.entities.Cidade;
 import br.com.embarcado.entities.Itinerario;
 import br.com.embarcado.repository.BarcoRepository;
+import br.com.embarcado.repository.CidadeRepository;
 import br.com.embarcado.repository.ItinerarioRepository;
 
 @ManagedBean
@@ -19,10 +21,17 @@ import br.com.embarcado.repository.ItinerarioRepository;
 public class ItinerarioBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private Itinerario itinerarioSelecionado;
 	private Itinerario itinerario = new Itinerario();
 	private List<Itinerario> itinerarios = null;
+	private Long cidadeID;
 
 	public void save() {
+		CidadeRepository cityRepository = new CidadeRepository(
+				this.getManager());
+		Cidade destino = cityRepository.find(cidadeID);
+		this.itinerario.setDestino(destino);
+
 		ItinerarioRepository repository = new ItinerarioRepository(
 				this.getManager());
 		repository.save(this.itinerario);
@@ -32,6 +41,11 @@ public class ItinerarioBean implements Serializable {
 	}
 
 	public void update() {
+		CidadeRepository cityRepository = new CidadeRepository(
+				this.getManager());
+		Cidade destino = cityRepository.find(cidadeID);
+		this.itinerario.setDestino(destino);
+
 		ItinerarioRepository repository = new ItinerarioRepository(
 				this.getManager());
 		repository.search(this.itinerario.getId());
@@ -39,6 +53,7 @@ public class ItinerarioBean implements Serializable {
 
 		this.itinerario = new Itinerario();
 		this.itinerarios = null;
+		this.cidadeID = null;
 	}
 
 	public void remove(Itinerario itinerario) {
@@ -56,8 +71,17 @@ public class ItinerarioBean implements Serializable {
 
 	public String preparaAlterar(Itinerario itinerario) {
 		this.setItinerario(itinerario);
+		this.setCidadeID(this.getItinerario().getDestino().getId());
 
 		return "index?faces-redirect=true";
+	}
+
+	public Itinerario getItinerarioSelecionado() {
+		return itinerarioSelecionado;
+	}
+
+	public void setItinerarioSelecionado(Itinerario itinerarioSelecionado) {
+		this.itinerarioSelecionado = itinerarioSelecionado;
 	}
 
 	public Itinerario getItinerario() {
@@ -66,6 +90,14 @@ public class ItinerarioBean implements Serializable {
 
 	public void setItinerario(Itinerario itinerario) {
 		this.itinerario = itinerario;
+	}
+
+	public Long getCidadeID() {
+		return cidadeID;
+	}
+
+	public void setCidadeID(Long cidadeID) {
+		this.cidadeID = cidadeID;
 	}
 
 	@SuppressWarnings("unchecked")

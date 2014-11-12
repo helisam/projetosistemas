@@ -17,7 +17,7 @@
 			<h:body>
 				<h:form id="frmGeral" prependId="false"
 					enctype="multipart/form-data">
-					<p:fieldset legend="Manter Cidade" toggleable="true">
+					<p:fieldset legend="Controle de Cidades" toggleable="true">
 						<p:messages id="messages" />
 
 						<h:panelGrid columns="2" id="pnPorra"
@@ -156,9 +156,9 @@
 
 							<h:outputLabel id="lbImagem" value="Imagem:"
 								style="float: right;" />
-							<p:fileUpload fileUploadListener="#{cidadeBean.fileUploadAction}"
-								sizeLimit="204800" auto="true" image="/imagens/imgBuscar.png"
-								customUI="true" update="outputPanelUpload, frmGeral, dtCidades" />
+							<p:fileUpload label="Anexar" fileUploadListener="#{cidadeBean.fileUploadAction}"
+								sizeLimit="204800" auto="true" 
+								customUI="true" update="outputPanelUpload, frmGeral, dtCidades"/>
 
 
 							<p:commandButton value="Salvar" action="#{cidadeBean.saveFoto()}"

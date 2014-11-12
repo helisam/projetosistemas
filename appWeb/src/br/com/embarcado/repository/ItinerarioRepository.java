@@ -8,7 +8,7 @@ import br.com.embarcado.entities.Itinerario;
 
 public class ItinerarioRepository {
 	private EntityManager entityManager;
-	
+
 	public ItinerarioRepository(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
@@ -20,20 +20,21 @@ public class ItinerarioRepository {
 
 	public void remove(Itinerario itinerario) {
 		Itinerario itinerarioTemp = new Itinerario();
-		itinerarioTemp = this.entityManager.find(Itinerario.class, itinerario.getId());
+		itinerarioTemp = this.entityManager.find(Itinerario.class,
+				itinerario.getId());
 		this.entityManager.remove(itinerarioTemp);
 	}
-	
-	public void update(Itinerario itinerario){
+
+	public void update(Itinerario itinerario) {
 		this.entityManager.merge(itinerario);
 		this.entityManager.flush();
 	}
-	
+
 	public Itinerario find(Long ID) {
 		return this.entityManager.find(Itinerario.class, ID);
 	}
-	
-	public Itinerario search(Long ID){
+
+	public Itinerario search(Long ID) {
 		return this.entityManager.find(Itinerario.class, ID);
 	}
 

@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +26,10 @@ public class Itinerario implements Serializable {
 	@Column(name = "itinerario_ID")
 	private Long id;
 
-	@Column(name = "itinerario_DESTINO", length = 50, nullable = false)
-	private String destino;
-
+	@OneToOne
+	@JoinColumn(name = "cidade_ID")
+	private Cidade destino;
+	
 	@Column(name = "itinerario_LOCALPARTIDA", nullable = false)
 	private String localPartida;
 
@@ -53,11 +56,11 @@ public class Itinerario implements Serializable {
 		this.id = id;
 	}
 
-	public String getDestino() {
+	public Cidade getDestino() {
 		return destino;
 	}
 
-	public void setDestino(String destino) {
+	public void setDestino(Cidade destino) {
 		this.destino = destino;
 	}
 
