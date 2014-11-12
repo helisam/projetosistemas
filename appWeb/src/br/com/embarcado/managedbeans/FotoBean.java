@@ -1,4 +1,4 @@
-package br.com.embarcado.managedbeans;
+/*package br.com.embarcado.managedbeans;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -106,14 +106,14 @@ public class FotoBean {
 		byte[] imagem = event.getFile().getContents();
 		foto.setImagem(imagem);
 
-		/*
+		
 		 * this.factory = Persistence.createEntityManagerFactory(null);
 		 * 
 		 * EntityManager entityManager = this.factory.createEntityManager();
 		 * entityManager.getTransaction().begin();
 		 * 
 		 * ImagemRepository img = new ImagemRepository(entityManager);
-		 */
+		 
 
 		FotoRepository repository = new FotoRepository(this.getManager());
 		repository.save(this.foto);
@@ -227,3 +227,4 @@ public class FotoBean {
     } 
 
 }
+*/
