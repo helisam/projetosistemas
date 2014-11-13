@@ -10,34 +10,22 @@
 <ui:decorate template="/template/layout.xhtml">
 	<ui:define name="conteudo">
 		<h:form>
-			<p:gmap id="gmap" center="36.890257,30.707417" zoom="13"
-				type="HYBRID" model="#{infoWindowView.advancedModel}"
-				style="width:600px;height:400px">
+			<p:gmap center="36.890257,30.707417" zoom="13" type="ROADMAP"
+				style="width:1176px;height:527px" model="#{mapBean.advancedModel}"
+				overlaySelectListener="#{mapBean.onMarkerSelect}">
 
-				<p:ajax event="overlaySelect"
-					listener="#{infoWindowView.onMarkerSelect}" />
+				<p:gmapInfoWindow>
+					<p:outputPanel style="text-align:center;display:block;margin:auto:">
 
-				<p:gmapInfoWindow id="infoWindow">
-					<p:outputPanel
-						style="text-align: center; display: block; margin: auto">
-
-						<p:graphicImage
-							name="/demo/images/antalya/#{infoWindowView.marker.data}"
-							height="150" />
+						<p:graphicImage value="/images/antalya/#{mapBean.marker.data}" />
 						<br />
-						<h:outputText value="#{infoWindowView.marker.title}" />
+						<h:outputText value="#{mapBean.marker.title}" />
 
 					</p:outputPanel>
+
 				</p:gmapInfoWindow>
 			</p:gmap>
 
-			<!-- Preload for demo -->
-			<p:outputPanel style="display:none">
-				<p:graphicImage name="/demo/images/antalya/konyaalti.png" />
-				<p:graphicImage name="/demo/images/antalya/ataturkparki.png" />
-				<p:graphicImage name="/demo/images/antalya/kaleici.png" />
-				<p:graphicImage name="/demo/images/antalya/karaalioglu.png" />
-			</p:outputPanel>
 		</h:form>
 	</ui:define>
 </ui:decorate>
