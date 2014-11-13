@@ -133,7 +133,7 @@
 								<f:facet name="header">
 									<h:outputText value="Destino" />
 								</f:facet>
-								<p:commandButton value="#{b.itinerario.destino}"
+								<p:commandButton value="#{b.itinerario.destino.nome}"
 									update="frmGeral, frmItinerario2"
 									oncomplete="viewItinerario.show()" icon="ui-icon-search">
 									<f:setPropertyActionListener
@@ -218,7 +218,7 @@
 							<h:outputLabel id="lbDestino" value="Destino:" for="destino"
 								style="float: right;" />
 							<p:inputText id="destino" size="50"
-								value="#{itinerarioBean.itinerario.destino}" required="true"
+								value="#{itinerarioBean.itinerario.destino.nome}" required="true"
 								requiredMessage="Campo [Destino] é obrigatório." />
 
 							<h:outputLabel id="lbPartida" value="Local de Partida:"
@@ -273,7 +273,7 @@
 							<h:outputLabel id="lbDestino" value="Destino:" for="destino"
 								style="float: right;" />
 							<h:outputText
-								value="#{barcoBean.barcoSelecionado.itinerario.destino}" />
+								value="#{barcoBean.barcoSelecionado.itinerario.destino.nome}" />
 
 							<h:outputLabel id="lbPartida" value="Local de Partida:"
 								for="partida" style="float: right;" />

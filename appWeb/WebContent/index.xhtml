@@ -9,7 +9,36 @@
 
 <ui:decorate template="/template/layout.xhtml">
 	<ui:define name="conteudo">
-		<p>Esse sistema tem por objetivo mostrar todo o itinerário dos barcos, bem como caracteristicas como: proprietário, valor de passagem e definições dos barcos</p>
+		<h:form>
+			<p:gmap id="gmap" center="36.890257,30.707417" zoom="13"
+				type="HYBRID" model="#{infoWindowView.advancedModel}"
+				style="width:600px;height:400px">
+
+				<p:ajax event="overlaySelect"
+					listener="#{infoWindowView.onMarkerSelect}" />
+
+				<p:gmapInfoWindow id="infoWindow">
+					<p:outputPanel
+						style="text-align: center; display: block; margin: auto">
+
+						<p:graphicImage
+							name="/demo/images/antalya/#{infoWindowView.marker.data}"
+							height="150" />
+						<br />
+						<h:outputText value="#{infoWindowView.marker.title}" />
+
+					</p:outputPanel>
+				</p:gmapInfoWindow>
+			</p:gmap>
+
+			<!-- Preload for demo -->
+			<p:outputPanel style="display:none">
+				<p:graphicImage name="/demo/images/antalya/konyaalti.png" />
+				<p:graphicImage name="/demo/images/antalya/ataturkparki.png" />
+				<p:graphicImage name="/demo/images/antalya/kaleici.png" />
+				<p:graphicImage name="/demo/images/antalya/karaalioglu.png" />
+			</p:outputPanel>
+		</h:form>
 	</ui:define>
 </ui:decorate>
 </html>
