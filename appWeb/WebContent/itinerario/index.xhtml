@@ -45,7 +45,8 @@
 							<h:outputLabel id="lbchegada" value="*Horário de Chegada:"
 								for="chegada" style="float: right;" />
 							<p:inputText id="chegada" size="100"
-								value="#{itinerarioBean.itinerario.horaChegada}" required="false"
+								value="#{itinerarioBean.itinerario.horaChegada}"
+								required="false"
 								requiredMessage="Campo [Horário de Chegada] é obrigatório." />
 
 							<h:outputLabel id="lbdistancia" value="*Distância (KM):"
@@ -80,8 +81,7 @@
 
 						<p:spacer height="10" />
 
-						<p:dataTable id="dtIti"
-							emptyMessage="Nenhum registro encontrado."
+						<p:dataTable id="dtIti" emptyMessage="Nenhum registro encontrado."
 							value="#{itinerarioBean.itinerarios}" var="d"
 							style="text-align: center; font-weight: bold;">
 							<f:facet name="header">
@@ -92,11 +92,11 @@
 								<f:facet name="header">
 									<h:outputText value="Destino" />
 								</f:facet>
-							<p:commandButton value="#{d.destino.nome}"
-									update="frmGeral, frmCidade"
-									oncomplete="viewCidade.show()" icon="ui-icon-search">
+								<p:commandButton value="#{d.destino.nome}"
+									update="frmGeral, frmCidade" oncomplete="viewCidade.show()"
+									icon="ui-icon-search">
 									<f:setPropertyActionListener
-										target="#{itinerarioBean.itinerarioSelecionado}" value="#{i}" />
+										target="#{itinerarioBean.itinerarioSelecionado}" value="#{d}" />
 								</p:commandButton>
 							</p:column>
 
@@ -120,28 +120,28 @@
 								</f:facet>
 								<h:outputText value="#{d.horaChegada}" />
 							</p:column>
-							
+
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Distância (KM)" />
 								</f:facet>
 								<h:outputText value="#{d.distancia}" />
 							</p:column>
-							
+
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Observação" />
 								</f:facet>
 								<h:outputText value="#{d.observacao}" />
 							</p:column>
-							
+
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Dias de Partida" />
 								</f:facet>
 								<h:outputText value="#{d.data}" />
 							</p:column>
-							
+
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Remover" />
@@ -158,8 +158,7 @@
 								</f:facet>
 								<h:commandLink value="Alterar">
 									<p:ajax event="click"
-										listener="#{itinerarioBean.preparaAlterar(d)}"
-										update="@form" />
+										listener="#{itinerarioBean.preparaAlterar(d)}" update="@form" />
 								</h:commandLink>
 							</p:column>
 
@@ -170,16 +169,13 @@
 						</p:dataTable>
 					</p:fieldset>
 				</h:form>
-					<p:dialog modal="true" widgetVar="viewCidade"
-					showEffect="slide" hideEffect="explode" resizable="false"
-					width="500" appendToBody="true"
-					header="Detalhes da Cidade Destino">
-					<h:form id="frmCidade" >
+				<p:dialog modal="true" widgetVar="viewCidade" showEffect="slide"
+					hideEffect="explode" resizable="false" width="500"
+					appendToBody="true" header="Detalhes da Cidade Destino">
+					<h:form id="frmCidade">
 						<p:growl id="msgCidade" />
 						<h:panelGrid columns="2">
-						#{itinerarioBean.itinerarios.size()}
-							<h:outputLabel id="lbNomeC" value="Nome:"
-								style="float: right;" />
+							<h:outputLabel id="lbNomeC" value="Nome:" style="float: right;" />
 							<h:outputText
 								value="#{itinerarioBean.itinerarioSelecionado.destino.nome}" />
 
@@ -188,10 +184,28 @@
 							<h:outputText
 								value="#{itinerarioBean.itinerarioSelecionado.destino.descricao}" />
 
-							<h:outputLabel id="estadoC" value="Estado:"
-								style="float: right;" />
+							<h:outputLabel id="estadoC" value="Estado:" style="float: right;" />
 							<h:outputText
 								value="#{itinerarioBean.itinerarioSelecionado.destino.estado.nome}" />
+						</h:panelGrid>
+						<h:column>------------------------------------------------------------------------</h:column>
+						<h:panelGrid title="Imagens">
+							<h:outputLabel id="lbImagensC" value="Imagens:" />
+							<h:panelGrid
+								rendered="#{itinerarioBean.itinerarioSelecionado.destino.fotos.size() gt 0}">
+
+									<ui:repeat
+										value="#{itinerarioBean.itinerarioSelecionado.destino.fotos}"
+										var="foto">
+										<p:graphicImage value="/upload/#{foto.imagem}" height="40px"
+											width="40px" title="#{foto.descricao}" style="align:center;margin-right:10px;" />
+									</ui:repeat>
+							</h:panelGrid>
+							<h:panelGrid
+								rendered="#{itinerarioBean.itinerarioSelecionado.destino.fotos.size() le 0}">
+								<h:outputText style="font-weight: bold" value="Não há fotos inseridas para essa cidade"  />
+							</h:panelGrid>
+
 						</h:panelGrid>
 					</h:form>
 				</p:dialog>

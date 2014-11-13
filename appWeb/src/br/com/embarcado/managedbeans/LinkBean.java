@@ -28,11 +28,11 @@ public class LinkBean {
 	}
 
 	public String listaLinkTrajeto() {
-		return "index?faces-redirect=true";
+		return "/trajeto";
 	}
 	
 	public String linkHome() {
-		return "/index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 	
 	 public String logout() {

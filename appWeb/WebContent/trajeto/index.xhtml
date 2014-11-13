@@ -9,11 +9,14 @@
 
 <ui:decorate template="/template/layout.xhtml">
 	<ui:define name="conteudo">
-		<h:form style="margin-left:auto;margin-right:auto;margin-top:10px;display:table">
+		<h:form>
 			<p:growl id="messagem" showDetail="true" />
-			<p:gmap center="-3.136906077389079,-59.98260598629713" zoom="16"
-				type="HYBRID" style="width:1176px;height:527px">
+			<p:gmap center="-3.136906077389079,-59.98260598629713" zoom="13"
+				type="HYBRID" style="width:1176px;height:527px"
+				model="#{mapBean.advancedModel}">
 
+				<p:ajax event="pointSelect" listener="#{mapBean.pontoSelecionado}"
+					update="messagemGeral" />
 			</p:gmap>
 
 		</h:form>
