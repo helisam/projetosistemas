@@ -7,21 +7,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
+
+    private EditText login;
+    private EditText senha;
+    private Button entrar;
+    private TextView attemps;
+    private int counter = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText login = (EditText) findViewById(R.id.editNome);
-        EditText senha = (EditText) findViewById(R.id.editSenha);
-        Button entrar = (Button) findViewById(R.id.btnLogin);
-
-        entrar.setOnClickListener(new View().OnClickListener);
+        login = (EditText) findViewById(R.id.editNome);
+        senha = (EditText) findViewById(R.id.editSenha);
+        entrar = (Button) findViewById(R.id.btnLogin);
 
         @Override
         public void onClick (View v){
@@ -30,6 +35,9 @@ public class MainActivity extends Activity {
 
     }
 
+    public void login(View view){
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

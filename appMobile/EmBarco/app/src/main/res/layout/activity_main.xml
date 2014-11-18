@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="190dp"
-        android:id="@+id/"
+        android:id="@+id/ll_principal"
         android:transitionGroup="false"
         android:layout_gravity="center_vertical">
 
@@ -53,5 +53,7 @@
             android:layout_height="wrap_content"
             android:text="Login"
             android:id="@+id/btnLogin"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="login"/>
+    </LinearLayout>
     </LinearLayout>
