@@ -16,6 +16,7 @@ import br.com.embarcado.repository.BarcoRepository;
 import br.com.embarcado.repository.CidadeRepository;
 import br.com.embarcado.repository.ItinerarioRepository;
 
+//@Path("/itinerario")
 @ManagedBean
 @SessionScoped
 public class ItinerarioBean implements Serializable {

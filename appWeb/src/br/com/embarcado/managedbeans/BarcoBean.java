@@ -80,7 +80,7 @@ public class BarcoBean implements Serializable {
 
 		this.barcos = null;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public List<Barco> getBarcos() {
 		if (barcos == null) {

@@ -20,17 +20,17 @@ public class ProprietarioRepository {
 
 	public void remove(Proprietario prop) {
 		Proprietario propTemp = new Proprietario();
-		propTemp = this.entityManager.find(Proprietario.class, prop.getId()); 
-		
+		propTemp = this.entityManager.find(Proprietario.class, prop.getId());
+
 		this.entityManager.remove(propTemp);
 	}
-	
-	public void update(Proprietario prop){
+
+	public void update(Proprietario prop) {
 		this.entityManager.merge(prop);
 		this.entityManager.flush();
 	}
-	
-	public Proprietario search(Long ID){
+
+	public Proprietario search(Long ID) {
 		return this.entityManager.find(Proprietario.class, ID);
 	}
 

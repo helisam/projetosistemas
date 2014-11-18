@@ -10,6 +10,6 @@ public class createTables {
 		EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("embarco");
 		emf.close();
-		
+
 	}
 }

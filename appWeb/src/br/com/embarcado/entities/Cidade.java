@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "CIDADE")
 @NamedQueries({
@@ -24,6 +26,7 @@ import javax.persistence.Table;
 		@NamedQuery(name = "Cidade.findById", query = "SELECT c FROM Cidade c where c.id = :id"),
 		@NamedQuery(name = "Cidade.count", query = "SELECT COUNT(c) FROM Cidade c"),
 		@NamedQuery(name = "Cidade.findByNome", query = "SELECT c FROM Cidade c WHERE c.nome = :nome") })
+@JsonIgnoreProperties({"fotos"})
 public class Cidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +41,7 @@ public class Cidade implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "estado_ID")
 	private Estado estado;
-
+	
 	@OneToMany(mappedBy = "cidade", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Foto> fotos;
 

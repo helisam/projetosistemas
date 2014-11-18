@@ -32,8 +32,9 @@ public class CidadeRepository {
 
 	public Cidade refresh(Cidade cidade) {
 		if (cidade.getId() != null) {
-			return (Cidade) this.entityManager.createNamedQuery(
-					"Cidade.findById").setParameter("id", cidade.getId() ).getResultList();
+			return (Cidade) this.entityManager
+					.createNamedQuery("Cidade.findById")
+					.setParameter("id", cidade.getId()).getResultList();
 		}
 		return null;
 	}

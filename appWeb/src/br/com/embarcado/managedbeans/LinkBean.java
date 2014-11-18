@@ -22,7 +22,7 @@ public class LinkBean {
 	public String linkPassagem() {
 		return "/passagem";
 	}
-	
+
 	public String linkCidade() {
 		return "/cidade";
 	}
@@ -30,13 +30,14 @@ public class LinkBean {
 	public String listaLinkTrajeto() {
 		return "/trajeto";
 	}
-	
+
 	public String linkHome() {
 		return "index.xhtml?faces-redirect=true";
 	}
-	
-	 public String logout() {
-	        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-	        return "/login.xhtml?faces-redirect=true";
-	    }
+
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext()
+				.invalidateSession();
+		return "/login.xhtml?faces-redirect=true";
+	}
 }

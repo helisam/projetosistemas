@@ -15,14 +15,13 @@ import br.com.embarcado.repository.EstadoRepository;
 
 @ManagedBean
 @SessionScoped
-public class EstadoBean{
+public class EstadoBean {
 
 	private Estado estado = new Estado();
 	private List<Estado> estados = null;
 
 	public void save() {
-		EstadoRepository repository = new EstadoRepository(
-				this.getManager());
+		EstadoRepository repository = new EstadoRepository(this.getManager());
 		repository.save(this.estado);
 
 		this.estado = new Estado();
@@ -30,8 +29,7 @@ public class EstadoBean{
 	}
 
 	public void update() {
-		EstadoRepository repository = new EstadoRepository(
-				this.getManager());
+		EstadoRepository repository = new EstadoRepository(this.getManager());
 		repository.find(this.estado.getId());
 		repository.update(this.estado);
 
@@ -40,8 +38,7 @@ public class EstadoBean{
 	}
 
 	public void remove(Estado estado) {
-		EstadoRepository repository = new EstadoRepository(
-				this.getManager());
+		EstadoRepository repository = new EstadoRepository(this.getManager());
 		repository.remove(estado);
 
 		this.estado = null;
@@ -86,5 +83,5 @@ public class EstadoBean{
 		HttpServletRequest request = (HttpServletRequest) ec.getRequest();
 		return (EntityManager) request.getAttribute("entityManager");
 	}
-	
+
 }

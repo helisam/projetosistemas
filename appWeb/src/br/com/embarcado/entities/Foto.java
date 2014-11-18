@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "FOTO")
-
 public class Foto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,7 +23,7 @@ public class Foto implements Serializable {
 	private long id;
 	@Column(name = "foto_IMAGEM")
 	private String imagem;
-	
+
 	@Column(name = "foto_DESCRICAO")
 	private String descricao;
 
@@ -51,6 +50,7 @@ public class Foto implements Serializable {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
+
 	public String getImagem() {
 		return imagem;
 	}

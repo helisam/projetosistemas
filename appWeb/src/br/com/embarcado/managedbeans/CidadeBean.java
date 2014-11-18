@@ -35,7 +35,8 @@ public class CidadeBean implements Serializable {
 	 * AJEITAR ESSA CONSTANTE MÁGINA
 	 * -------------------------------------------------------
 	 */
-	File file = new File("C:/Users/helisam.bentes/Desktop/ProjetoGit/Embarcado/appWeb");
+	File file = new File(
+			"C:/Users/helisam.bentes/Desktop/ProjetoGit/Embarcado/appWeb");
 	/* ----------------------------------------------------- */
 
 	private Cidade cidade = new Cidade();
@@ -190,24 +191,10 @@ public class CidadeBean implements Serializable {
 		return new ArrayList<Foto>();
 	}
 
-	/*
-	 * public StreamedContent getImage2(Foto foto) { try { final BufferedImage
-	 * bi = ImageIO.read(new ByteArrayInputStream(foto .getImagem()));
-	 * ImageIO.write(bi, "jpg", new File("C:\\out.jpg")); } catch (IOException
-	 * e) { e.printStackTrace(); } return null; }
-	 */
-
 	public String getImage(Foto foto) {
 		System.out.println(foto.getImagem());
 		return foto.getImagem();
 	}
-
-	/*
-	 * public void enviarImagem(FileUploadEvent event) { byte[] img =
-	 * event.getFile().getContents(); setImagemEnviada(new
-	 * DefaultStreamedContent(new ByteArrayInputStream( img), "image/jpg"));
-	 * fotoSelecionada = img; }
-	 */
 
 	public void fileUploadAction(FileUploadEvent event) {
 		try {
@@ -232,7 +219,7 @@ public class CidadeBean implements Serializable {
 			byte[] arquivo = event.getFile().getContents();
 			String caminho = file + "/WebContent/upload/"
 					+ event.getFile().getFileName();
-			
+
 			// esse trecho grava o arquivo no diretório
 			FileOutputStream fos = new FileOutputStream(caminho);
 			fos.write(arquivo);

@@ -29,7 +29,7 @@ public class Itinerario implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "cidade_ID")
 	private Cidade destino;
-	
+
 	@Column(name = "itinerario_LOCALPARTIDA", nullable = false)
 	private String localPartida;
 
