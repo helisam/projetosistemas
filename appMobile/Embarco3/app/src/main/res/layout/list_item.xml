@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <!-- Name Label -->
+
+    <TextView
+        android:id="@+id/nomeBarco"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textColor="@color/darkgreen"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- Proprietario label -->
+    <TextView
+        android:id="@+id/propietarioBarco"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textColor="#acacac" />
+
+    <!-- Ano Fabricação label -->
+    <TextView
+        android:id="@+id/anoBarco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Ano: "
+        android:textColor="#5d5d5d"
+        android:textStyle="bold" />
+
+    <!-- Descrição Barco label -->
+    <TextView
+        android:id="@+id/descricaoBarco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Descrição: "
+        android:textColor="#5d5d5d"
+        android:textStyle="bold" />
+
+    <!-- Destino Barco label -->
+    <TextView
+        android:id="@+id/destinoBarco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Destino: "
+        android:textColor="#5d5d5d"
+        android:textStyle="bold" />
+
+    <!-- Partida Barco label -->
+    <TextView
+        android:id="@+id/partidaBarco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Partida: "
+        android:textColor="#5d5d5d"
+        android:textStyle="bold" />
+
+    <!-- Hora Saida Barco label -->
+    <TextView
+        android:id="@+id/hSaidaBarco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Hora Saída: "
+        android:textColor="#5d5d5d"
+        android:textStyle="bold" />
+
+    <!-- Data Barco label -->
+    <TextView
+        android:id="@+id/dataBarco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Data de partida: "
+        android:textColor="#5d5d5d"
+        android:textStyle="bold" />
+
+</LinearLayout>

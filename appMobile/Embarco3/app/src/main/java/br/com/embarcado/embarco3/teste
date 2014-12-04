@@ -1,0 +1,72 @@
+{
+    "barcos": [
+        {
+            "id": "1",
+            "nome": "Barco 1",
+            "anoFabricacao": "2010",
+            "capacidade": "200",
+            "descricao": "Descrição do Barco 1",
+            "proprietario": {
+                "idP": "1",
+                "nomeP": "Dono 1",
+                "cpfP": "6570467549",
+                "mailP": "dono1@dono.com",
+                "foneP": "6545465"
+            },
+            "itinerario": {
+                "idI": "1",
+                "destino": {
+                    "idD": "4",
+                    "nomeD": "Maceió",
+                    "descricaoD": "Cidade de Maceió",
+                    "estado": {
+                        "id": "13",
+                        "siglaE": "AL",
+                        "nomeE": "Alagoas",
+                        "capitalE": "Maceió"
+                    }
+                },
+                "localPartida": "Panair",
+                "horaSaida": "12:00",
+                "horaChegada": "13:00",
+                "distancia": "100",
+                "observacaoI": "teste de teste",
+                "data": "Todas as quartas"
+            }
+            },
+            {
+                "id": "2",
+                "nome": "Barco 2",
+                "anoFabricacao": "2011",
+                "capacidade": "220",
+                "descricao": "Descrição do Barco 2",
+                "proprietario": {
+                    "idP": "2",
+                    "nomeP": "Dono 2",
+                    "cpfP": "111111111",
+                    "mailP": "dono2@dono.com",
+                    "foneP": "2222222"
+                },
+                "itinerario": {
+                    "idI": "2",
+                    "destino": {
+                        "idD": "1",
+                        "nomeD": "Iranduba",
+                        "descricaoD": "Cidade de Iranduba",
+                        "estado": {
+                            "id": "1",
+                            "siglaE": "AM",
+                            "nomeE": "Amazonas",
+                            "capitalE": "Manaus"
+                        }
+                    },
+                    "localPartida": "Roadway",
+                    "horaSaida": "02:00",
+                    "horaChegada": "15:00",
+                    "distancia": "245",
+                    "observacaoI": "Porto do Centro de Manaus",
+                    "data": "Domingo"
+                }
+            }
+        ]
+    }

@@ -1,0 +1,62 @@
+[
+{
+id: 1,
+destino: {
+id: 4,
+nome: "Maceió",
+descricao: "Cidade de Maceió",
+estado: {
+id: 13,
+sigla: "AL",
+nome: "Alagoas",
+capital: "Maceió"
+}
+},
+localPartida: "Panair",
+horaSaida: "12:00",
+horaChegada: "13:00",
+distancia: "100",
+observacao: "teste de teste",
+data: "Todas as quartas"
+},
+{
+id: 2,
+destino: {
+id: 3,
+nome: "Floripa",
+descricao: "Cidade de Florianopolis",
+estado: {
+id: 9,
+sigla: "SC",
+nome: "Santa Catarina",
+capital: "Florianópolis"
+}
+},
+localPartida: "Roadway",
+horaSaida: "01:00",
+horaChegada: "10:00",
+distancia: "200",
+observacao: "teste de teste de teste",
+data: "Todo domingo"
+},
+{
+id: 3,
+destino: {
+id: 5,
+nome: "Manaus",
+descricao: "Cidade de Manaus",
+estado: {
+id: 3,
+sigla: "AM",
+nome: "Amazonas",
+capital: "Manaus"
+}
+},
+localPartida: "Roadway",
+horaSaida: "01:00",
+horaChegada: "10:00",
+distancia: "150",
+observacao: "teste de teste de teste",
+data: "Todo domingo"
+}
+]

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EmBarco</string>
+    <string name="action_settings">Configurações</string>
+    <string name="action_logout">Logout</string>
+    //*
+    *   Login Activity
+    *//
+    <string name="label_geral">EmBarco - Login</string>
+    <string name="label_login">Usuário:</string>
+    <string name="label_senha">Senha:</string>
+    <string name="button_login">Acessar</string>
+    <!--Mensagens dessa activity -->
+    <string name="field_register">Campo Registro será implementando</string>
+    <string name="error_login">Nome de usuário errado!</string>
+    <string name="error_pass">Senha errada!</string>
+
+</resources>

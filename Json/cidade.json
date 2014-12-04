@@ -1,0 +1,35 @@
+[
+{
+id: 3,
+nome: "Floripa",
+descricao: "Cidade de Florianopolis",
+estado: {
+id: 9,
+sigla: "SC",
+nome: "Santa Catarina",
+capital: "Florianópolis"
+}
+},
+{
+id: 4,
+nome: "Maceió",
+descricao: "Cidade de Maceió",
+estado: {
+id: 13,
+sigla: "AL",
+nome: "Alagoas",
+capital: "Maceió"
+}
+},
+{
+id: 5,
+nome: "Manaus",
+descricao: "Cidade de Manaus",
+estado: {
+id: 3,
+sigla: "AM",
+nome: "Amazonas",
+capital: "Manaus"
+}
+}
+]

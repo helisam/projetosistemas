@@ -1,0 +1,38 @@
+{
+    "barcos": [
+        {
+            "id": "1",
+            "nome": "Barco 1",
+            "anoFabricacao": "2010",
+            "capacidade": "200",
+            "descricao": "Descrição do Barco 1",
+            "proprietario": {
+                "id": "1",
+                "nome": "Dono 1",
+                "cpf": "6570467549",
+                "mail": "dono1@dono.com",
+                "fone": "6545465"
+            },
+            "itinerario": {
+                "id": "1",
+                "destino": {
+                    "id": "4",
+                    "nome": "Maceió",
+                    "descricao": "Cidade de Maceió",
+                    "estado": {
+                        "id": "13",
+                        "sigla": "AL",
+                        "nome": "Alagoas",
+                        "capital": "Maceió"
+                    }
+                },
+                "localPartida": "Panair",
+                "horaSaida": "12:00",
+                "horaChegada": "13:00",
+                "distancia": "100",
+                "observacao": "teste de teste",
+                "data": "Todas as quartas"
+            }
+        }
+    ]
+}

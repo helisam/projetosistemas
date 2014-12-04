@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EmBarco2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="inicial">Fala mano</string>
+    <string name="nome">Nome do usuário</string>
+    <string name="clique">Clique aqui</string>
+    <string name="modal">Exibir Alerta</string>
+
+
+    <string name="nome_aluno">Nome do aluno</string>
+    <string name="add_aluno">Adicionar aluno</string>
+</resources>
