@@ -3,6 +3,7 @@ package br.com.embarcado.embarco3;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.sip.SipManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +35,7 @@ public class MainActivity extends ListActivity {
     private static final String TAG_ID = "id";
     private static final String TAG_NOME = "nome";
     private static final String TAG_ANOFABRICACAO = "anoFabricacao";
-    private static final String TAG_DESCRICAO = "address";
+    private static final String TAG_DESCRICAO = "descricao";
     private static final String TAG_PROPRIETARIO = "proprietario";
     private static final String TAG_PROPRIETARIO_NOME = "nomeP";
     private static final String TAG_PROPRIETARIO_CPF = "cpfP";
@@ -76,14 +77,16 @@ public class MainActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // getting values from selected ListItem
-                String nomeBarco = ((TextView) view.findViewById(R.id.nomeBarco))
+                String nomeBarco = "Nome do Barco: " + ((TextView) view.findViewById(R.id.nomeBarco))
                         .getText().toString();
-                String proprietarioBarco = ((TextView) view.findViewById(R.id.propietarioBarco))
+                String proprietarioBarco = "Proprietario: "+ ((TextView) view.findViewById(R.id.propietarioBarco))
                         .getText().toString();
-                String destinoBarco = ((TextView) view.findViewById(R.id.destinoBarco))
+                String destinoBarco = "Destino: " + ((TextView) view.findViewById(R.id.destinoBarco))
                         .getText().toString();
 
-                String ano = ((TextView) view.findViewById(R.id.anoBarco))
+                String ano = "Ano Fabricação: " + ((TextView) view.findViewById(R.id.anoBarco)).getText().toString();
+                String descricaoBarco = "Descrição do Barco: " + (TextView) view.findViewById(R.id.descricaoBarco);
+                String dataBarco = "Partidas: "+ ((TextView) view.findViewById(R.id.dataBarco))
                         .getText().toString();
 
                 // Starting single contact activity
@@ -93,6 +96,8 @@ public class MainActivity extends ListActivity {
                 in.putExtra(TAG_PROPRIETARIO_NOME, proprietarioBarco);
                 in.putExtra(TAG_ITINERARIO_DESTINO, destinoBarco);
                 in.putExtra(TAG_ANOFABRICACAO, ano);
+                in.putExtra(TAG_DESCRICAO, descricaoBarco);
+                in.putExtra(TAG_ITINERARIO_DATA, dataBarco);
                 startActivity(in);
 
             }
@@ -112,7 +117,7 @@ public class MainActivity extends ListActivity {
             super.onPreExecute();
             // Showing progress dialog
             pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setMessage("Carregando lista de barcos");
+            pDialog.setMessage("Carregando lista de barcos...");
             pDialog.setCancelable(false);
             pDialog.show();
 
@@ -142,21 +147,15 @@ public class MainActivity extends ListActivity {
                         String id = c.getString(TAG_ID);
                         String nomeBarco = c.getString(TAG_NOME);
                         String anoBarco = c.getString(TAG_ANOFABRICACAO);
-                        //String proprietarioBarco = c.getString(TAG_PROPRIETARIO_NOME);
-                        //String destinoBarco = c.getString(TAG_ITINERARIO_DESTINO);
-
-                        // Phone node is JSON Object
-                        //JSONObject phone = c.getJSONObject(TAG_PHONE);
-                        // String mobile = phone.getString(TAG_PHONE_MOBILE);
-                        // String home = phone.getString(TAG_PHONE_HOME);
-                        // String office = phone.getString(TAG_PHONE_OFFICE);
+                        String descricaoBarco = c.getString(TAG_DESCRICAO);
                         // Proprietario node is JSON Object
                         JSONObject proprietario = c.getJSONObject(TAG_PROPRIETARIO);
                         String proprietarioBarco = proprietario.getString(TAG_PROPRIETARIO_NOME);
 
 
-                        // Proprietario node is JSON Object
+                        // Itinerario node is JSON Object
                         JSONObject itinerario = c.getJSONObject(TAG_ITINERARIO);
+                        String dataBarco = itinerario.getString(TAG_ITINERARIO_DATA);
                         JSONObject destino = itinerario.getJSONObject(TAG_DESTINO);
                         String destinoBarco = destino.getString(TAG_ITINERARIO_DESTINO);
 
@@ -169,8 +168,9 @@ public class MainActivity extends ListActivity {
                         barco.put(TAG_NOME, nomeBarco);
                         barco.put(TAG_PROPRIETARIO_NOME, proprietarioBarco);
                         barco.put(TAG_ITINERARIO_DESTINO, destinoBarco);
-
+                        barco.put(TAG_DESCRICAO, descricaoBarco);
                         barco.put(TAG_ANOFABRICACAO, anoBarco);
+                        barco.put(TAG_ITINERARIO_DATA, dataBarco);
 
                         // adding barco to barco list
                         barcoList.add(barco);
@@ -197,8 +197,8 @@ public class MainActivity extends ListActivity {
             ListAdapter adapter = new SimpleAdapter(
                     MainActivity.this, barcoList,
                     R.layout.list_item_main, new String[]{TAG_NOME, TAG_PROPRIETARIO_NOME,
-                    TAG_ITINERARIO_DESTINO, TAG_ANOFABRICACAO}, new int[]{R.id.nomeBarco,
-                    R.id.propietarioBarco, R.id.destinoBarco, R.id.anoBarco});
+                    TAG_ITINERARIO_DESTINO, TAG_ANOFABRICACAO, TAG_DESCRICAO, TAG_ITINERARIO_DATA}, new int[]{R.id.nomeBarco,
+                    R.id.propietarioBarco, R.id.destinoBarco, R.id.anoBarco, R.id.descricaoBarco, R.id.dataBarco});
 
             setListAdapter(adapter);
         }
